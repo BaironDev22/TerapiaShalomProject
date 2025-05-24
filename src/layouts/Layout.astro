@@ -1,22 +1,38 @@
-<!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
-</html>
+---
+import '../styles/global.css';
+import Navbar from '../components/Navbar.astro';
+import WhatsappIcon from '../components/icons/WTSP.astro';
+import Footer from '../components/Footer.astro';
 
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>
+const { title = 'Terapia Shalom - Masajes y Bienestar' } = Astro.props as { title?: string };
+---
+
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+  </head>
+  <body class="bg-ts-background text-ts-text font-sans relative min-h-screen flex flex-col">
+
+    <Navbar />
+
+    <main class="flex-grow"> 
+      <slot />
+    </main>
+
+    <a
+      href="https://wa.me/56912345678"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="fixed bottom-6 right-6 z-50 flex items-center justify-center w-14 h-14 bg-ts-primary hover:bg-ts-accent text-white rounded-full shadow-lg transition-transform duration-300 hover:scale-110"
+      aria-label="Chatear por WhatsApp"
+    >
+      <WhatsappIcon class="w-7 h-7 fill-current" />
+    </a>
+
+    <Footer />
+
+  </body>
+</html>

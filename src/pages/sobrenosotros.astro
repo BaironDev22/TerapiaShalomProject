@@ -1,0 +1,67 @@
+---
+// src/pages/sobre-nosotros.astro
+import Layout from '../layouts/Layout.astro'; // Importa tu layout principal
+---
+
+<Layout title="Sobre Nosotros - Terapia Shalom">
+  <main class="container mx-auto px-4 py-16 min-h-screen">
+    <section class="text-center mb-12">
+      {/* CAMBIO: Título principal "Sobre Nosotros" ahora usa text-ts-text (tu color de texto general) */}
+      <h1 class="text-5xl font-bold text-ts-text mb-4">Sobre Nosotros</h1>
+      {/* El texto debajo del título principal se mantiene en text-gray-600 para el gris medio */}
+      <p class="text-lg text-ts-text max-w-2xl mx-auto">
+        Conoce la historia, la misión y los valores que nos guían en Terapia Shalom.
+      </p>
+    </section>
+
+    {/* SECCIÓN: Nuestra Historia */}
+    <section class="max-w-4xl mx-auto bg-ts-background-dark p-8 rounded-lg shadow-lg mb-12">
+      {/* Títulos de sección como este se mantienen en text-ts-primary (el "medio celeste") */}
+      <h2 class="text-3xl font-semibold text-ts-primary mb-6 text-center">Nuestra Historia</h2>
+      <p class="text-ts-text leading-relaxed mb-4">
+        Terapia Shalom nació de la visión de un espacio seguro y de apoyo donde las personas pudieran encontrar la sanación y el crecimiento. Fundada por la especialista certificada Jimena Vargas, con años de experiencia en masoterapia clinica, nuestro objetivo fue crear una comunidad de apoyo que aborde las necesidades emocionales y mentales con empatía y profesionalismo.
+      </p>
+      <p class="text-ts-text leading-relaxed">
+        Desde nuestros inicios en 2023, hemos crecido para ofrecer una amplia gama de servicios, siempre manteniendo nuestro compromiso con la excelencia y el bienestar integral de nuestros pacientes.
+      </p>
+    </section>
+
+    {/* SECCIÓN: Nuestra Misión */}
+    <section class="max-w-4xl mx-auto bg-ts-background-dark p-8 rounded-lg shadow-lg mb-12">
+      <h2 class="text-3xl font-semibold text-ts-primary mb-6 text-center">Nuestra Misión</h2>
+      <p class="text-ts-text leading-relaxed text-center text-lg">
+        En Terapia Shalom, nuestra misión es acompañar a nuestros pacientes en su camino hacia el equilibrio emocional y el bienestar mental, proporcionando herramientas y estrategias personalizadas para una vida plena y consciente.
+      </p>
+    </section>
+
+    {/* SECCIÓN: Nuestros Valores */}
+    <section class="max-w-4xl mx-auto bg-ts-background-dark p-8 rounded-lg shadow-lg">
+      <h2 class="text-3xl font-semibold text-ts-primary mb-6 text-center">Nuestros Valores</h2>
+      <ul class="list-disc list-inside text-ts-text grid grid-cols-1 md:grid-cols-2 gap-4">
+        <li class="mb-2"><strong>Empatía:</strong> Escuchamos y comprendemos las experiencias de nuestros pacientes sin juicio.</li>
+        <li class="mb-2"><strong>Integridad:</strong> Actuamos con honestidad, ética y transparencia en todas nuestras interacciones.</li>
+        <li class="mb-2"><strong>Profesionalismo:</strong> Ofrecemos servicios de la más alta calidad, basados en la evidencia y la formación continua.</li>
+        <li class="mb-2"><strong>Confidencialidad:</strong> Garantizamos la privacidad y seguridad de toda la información de nuestros pacientes.</li>
+        
+      </ul>
+    </section>
+
+    {/* SECCIÓN: Conoce a Nuestro Equipo */}
+    <section class="max-w-4xl mx-auto mt-12 bg-ts-background-dark p-8 rounded-lg shadow-lg">
+      <h2 class="text-3xl font-semibold text-ts-primary mb-6 text-center">Conoce a Nuestro Equipo</h2>
+      <div class="flex flex-col items-center justify-center">
+        <div class="text-center">
+          <img
+            src="/assets/376b4099-53b6-4089-97f9-a103bbec2a75.JPG"
+            alt="Jimena Vargas - Masoterapeuta Especializada en Masajes Terapéuticos"
+            class="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-2 border-ts-accent"
+          >
+          <h3 class="text-xl font-semibold text-ts-text">Dra Jimena Vargas</h3>
+          <p class="text-ts-accent">Masoterapeuta</p>
+          <p class="text-sm text-ts-text mt-2">Especializada En Masajes Terapéuticos.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</Layout>

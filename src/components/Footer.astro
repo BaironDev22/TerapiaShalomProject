@@ -1,0 +1,28 @@
+---
+import CelularIcon from './icons/CelularIcon.astro'; 
+import MailIcon from './icons/MailIcon.astro'; 
+// import HorarioIcon from './icons/HorarioIcon.astro'; // <--- ¡Esta línea ha sido comentada o eliminada!
+
+---
+
+<footer class="mt-auto py-4 text-center bg-ts-background text-ts-text border-t border-ts-accent/20">
+  <div class="max-w-4xl mx-auto px-4">
+    <h3 class="text-lg font-semibold mb-2">Terapia Shalom</h3>
+
+    <div class="flex flex-col md:flex-row justify-center items-center md:space-x-8 space-y-2 md:space-y-0 text-center text-sm">
+      <p class="flex items-center justify-center">
+        <CelularIcon class="w-4 h-4 mr-2" /> {/* Ícono de teléfono ya integrado */}
+        +56 9 1234 5678
+      </p>
+      <p class="flex items-center justify-center">
+        <MailIcon class="w-4 h-4 mr-2" /> {/* Ícono de correo ya integrado */}
+        jimenavargas@terapiashalom.cl
+      </p>
+      <p class="flex items-center justify-center">
+        ⏰ Lunes a Viernes, 9:00 - 18:00 {/* <--- ¡De vuelta al emoji del reloj! */}
+      </p>
+    </div>
+
+    <p class="mt-2 text-xs opacity-90">&copy; {new Date().getFullYear()} Terapia Shalom. Todos los derechos reservados.</p>
+  </div>
+</footer>

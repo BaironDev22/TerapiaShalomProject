@@ -1,0 +1,160 @@
+---
+// src/components/Navbar.astro
+
+// ASEGÚRATE DE QUE LA RUTA DEL ÍCONO SEA CORRECTA.
+// Por ejemplo, si FlowerIcon.astro está en src/components/icons/, la ruta es './icons/FlowerIcon.astro'
+import FlowerIcon from './icons/FlowerShalomIcon.astro'; 
+
+const navItems = [
+  {
+    title: "Inicio",
+    label: "inicio",
+    url: "/",
+  },
+  {
+    title: "Servicios",
+    label: "servicios",
+    url: "/servicios",
+  },
+  {
+    title: "Sobre Nosotros", // ¡NUEVO ENLACE AÑADIDO AQUÍ!
+    label: "sobre-nosotros",
+    url: "/sobrenosotros",
+  },
+  {
+    title: "Contacto",
+    label: "contacto",
+    url: "/contacto",
+  },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header
+  class="fixed top-0 z-10 flex items-center justify-center w-full mx-auto mt-2"
+>
+  <nav
+    class="
+      flex px-3 text-sm font-medium rounded-full
+      text-ts-accent
+      justify-between items-center w-[90%] md:w-auto
+      bg-ts-background/50
+      backdrop-blur-sm
+      shadow-lg
+      ring-1 ring-ts-background/10
+    "
+    aria-label="Menú principal"
+  >
+    {/* Contenedor del ícono y texto "T/S" */}
+    <a href="/" class="text-2xl font-bold text-ts-primary flex-shrink-0 flex items-center space-x-2"> {/* Añadido 'flex items-center space-x-2' para alinear el ícono y texto */}
+      <FlowerIcon class="w-7 h-7 text-ts-primary" /> {/* Integración del ícono */}
+      <span></span>
+    </a>
+
+    <button id="menu-button" class="md:hidden focus:outline-none ml-4">
+      <svg
+        class="w-8 h-8 text-ts-accent"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M4 6h16M4 12h16M4 18h16"
+        ></path>
+      </svg>
+    </button>
+
+    <ul
+      id="menu"
+      class="hidden md:flex md:space-x-6 text-sm flex-col md:flex-row absolute md:relative top-full left-0 w-full md:w-auto bg-ts-background md:bg-transparent shadow-md md:shadow-none p-4 md:p-0 z-40"
+    >
+      {
+        navItems.map((link) => (
+          <li>
+            <a
+              class={`relative block px-3 py-2 transition hover:text-ts-primary ${
+                currentPath === link.url ? "text-ts-primary font-semibold" : ""
+              }`}
+              aria-label={link.label}
+              href={link.url}
+            >
+              {link.title}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+</header>
+
+<script is:inline>
+  const menuButton = document.getElementById("menu-button");
+  const menu = document.getElementById("menu");
+
+  const currentPath = window.location.pathname;
+
+  if (menuButton && menu) {
+    menuButton.addEventListener("click", () => {
+      menu.classList.toggle("hidden");
+      menu.classList.toggle("flex");
+      menu.classList.toggle("active-menu");
+    });
+
+    menu.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        if (window.innerWidth < 768) {
+          menu.classList.add("hidden");
+          menu.classList.remove("flex", "active-menu");
+        }
+      });
+    });
+
+    document.addEventListener("click", (event) => {
+      if (
+        !menu.contains(event.target) &&
+        !menuButton.contains(event.target) &&
+        window.innerWidth < 768
+      ) {
+        if (!menu.classList.contains("hidden")) {
+          menu.classList.add("hidden");
+          menu.classList.remove("flex");
+          menu.classList.remove("active-menu");
+        }
+      }
+    });
+
+    window.addEventListener("resize", () => {
+      if (window.innerWidth >= 768) {
+        menu.classList.remove("hidden", "flex", "active-menu");
+      } else {
+        menu.classList.add("hidden");
+        menu.classList.remove("flex", "active-menu");
+      }
+    });
+  }
+
+  const navLinks = document.querySelectorAll('#menu a');
+  navLinks.forEach(link => {
+    // Asegurarse de que el currentPath coincida con la URL exacta
+    // Esto es importante para rutas como /servicios vs /
+    if (link.getAttribute('href') === currentPath) {
+      link.classList.add('text-ts-primary', 'font-semibold');
+    } else {
+      link.classList.remove('text-ts-primary', 'font-semibold');
+    }
+  });
+</script>
+
+<style>
+  #menu.active-menu {
+    border-top: 1px solid #eee;
+    padding-top: 1rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+      0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  }
+</style>

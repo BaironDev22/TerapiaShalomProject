@@ -1,11 +1,88 @@
 ---
-import Welcome from '../components/Welcome.astro';
+// src/pages/index.astro
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+//import Icon from 'astro-icon'; // Asegúrate de que esta línea sea "import Icon from 'astro-icon';"
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="Inicio - Terapia Shalom: Bienestar y Armonía">
+  <main>
+    {/* SECCIÓN HÉROE */}
+    <section class="relative h-screen flex items-center justify-center text-white bg-cover bg-center" style="background-image: url('/assets/katherine-hanlon-83RTpUBjyYY-unsplash.jpg');">
+      {/* Overlay para oscurecer la imagen y que el texto resalte */}
+      <div class="absolute inset-0 bg-black opacity-50"></div>
+      <div class="relative z-10 text-center max-w-3xl mx-auto px-4 pt-20"> 
+        <h1 class="text-6xl md:text-7xl font-bold mb-6 text-ts-primary leading-tight">
+          Bienestar y Armonía <br> para tu Cuerpo y Mente
+        </h1>
+        <p class="text-xl md:text-2xl mb-8 text-gray-200">
+          En Terapia Shalom, te ofrecemos un santuario de sanación y relajación profunda a través de masajes terapéuticos y tratamientos integrales.
+        </p>
+        <a href="/servicios" class="bg-ts-accent text-white py-3 px-8 rounded-full text-lg font-semibold hover:bg-ts-primary transition duration-300 ease-in-out shadow-lg">
+          Descubre Nuestros Servicios
+        </a>
+      </div>
+    </section>
+
+    {/* SECCIÓN: Nuestros Servicios Destacados */}
+    <section class="py-16 bg-ts-background-light">
+      <div class="container mx-auto px-4 text-center">
+        <h2 class="text-4xl font-bold text-ts-primary mb-12">Nuestros Pilares de Bienestar</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+          {/* Tarjeta de Servicio 1 */}
+          <div class="bg-ts-background-dark p-8 rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition duration-300 ease-in-out">
+            <p class="text-ts-accent text-6xl mb-4 mx-auto">[Icono Masoterapia]</p> {/* TEMPORAL */}
+            <h3 class="text-2xl font-semibold text-ts-text mb-3">Masoterapia Clínica</h3>
+            <p class="text-ts-text mb-4">Alivia tensiones, reduce el dolor muscular y mejora la movilidad con técnicas profesionales.</p>
+            <a href="/servicios" class="text-ts-accent font-medium hover:underline">Saber más &rarr;</a>
+          </div>
+          {/* Tarjeta de Servicio 2 */}
+          <div class="bg-ts-background-dark p-8 rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition duration-300 ease-in-out">
+            <p class="text-ts-accent text-6xl mb-4 mx-auto">[Icono Bienestar]</p> {/* TEMPORAL */}
+            <h3 class="text-2xl font-semibold text-ts-text mb-3">Relajación Profunda</h3>
+            <p class="text-ts-text mb-4">Encuentra la calma y el equilibrio interior, liberando el estrés acumulado día a día.</p>
+            <a href="/servicios" class="text-ts-accent font-medium hover:underline">Saber más &rarr;</a>
+          </div>
+          {/* Tarjeta de Servicio 3 */}
+          <div class="bg-ts-background-dark p-8 rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition duration-300 ease-in-out">
+            <p class="text-ts-accent text-6xl mb-4 mx-auto">[Icono Meditación]</p> {/* TEMPORAL */}
+            <h3 class="text-2xl font-semibold text-ts-text mb-3">Tratamientos Integrales</h3>
+            <p class="text-ts-text mb-4">Programas personalizados para abordar necesidades específicas de bienestar integral.</p>
+            <a href="/servicios" class="text-ts-accent font-medium hover:underline">Saber más &rarr;</a>
+          </div>
+        </div>
+        <div class="mt-12">
+            <a href="/servicios" class="bg-ts-primary text-white py-3 px-8 rounded-full text-lg font-semibold hover:bg-ts-accent transition duration-300 ease-in-out shadow-lg">
+                Ver Todos los Servicios
+            </a>
+        </div>
+      </div>
+    </section>
+
+    {/* SECCIÓN: Nuestra Filosofía (Mini "Sobre Nosotros") */}
+    <section class="py-16 bg-ts-background-dark">
+      <div class="container mx-auto px-4 max-w-4xl text-center">
+        <h2 class="text-4xl font-bold text-ts-primary mb-8">Nuestra Filosofía</h2>
+        <p class="text-xl text-ts-text leading-relaxed mb-6">
+          En Terapia Shalom, creemos en un enfoque holístico para la salud, donde el bienestar físico y emocional se entrelazan. Nos dedicamos a crear un ambiente de confianza y comprensión, acompañándote en cada paso hacia una vida más plena y consciente.
+        </p>
+        <a href="/sobre-nosotros" class="text-ts-accent font-semibold text-lg hover:underline">
+          Conoce Más Sobre Nosotros &rarr;
+        </a>
+      </div>
+    </section>
+
+    {/* SECCIÓN: Llamada a la Acción Final */}
+    <section class="py-16 bg-ts-primary text-white text-center">
+      <div class="container mx-auto px-4 max-w-3xl">
+        <h2 class="text-4xl font-bold mb-6">¿Listo para comenzar tu camino hacia el bienestar?</h2>
+        <p class="text-xl mb-8">
+          Agenda tu sesión de masoterapia o consulta nuestros tratamientos hoy mismo.
+        </p>
+        <a href="/contacto" class="bg-white text-ts-primary py-4 px-10 rounded-full text-xl font-bold hover:bg-gray-200 transition duration-300 ease-in-out shadow-lg">
+          Agenda tu Sesión
+        </a>
+      </div>
+    </section>
+
+  </main>
 </Layout>

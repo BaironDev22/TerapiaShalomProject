@@ -1,8 +1,10 @@
 ---
+// src/layouts/Layout.astro
 import '../styles/global.css';
 import Navbar from '../components/Navbar.astro';
 import WhatsappIcon from '../components/icons/WTSP.astro';
 import Footer from '../components/Footer.astro';
+import { ViewTransitions } from 'astro:transitions';
 
 const { title = 'Terapia Shalom - Masajes y Bienestar' } = Astro.props as { title?: string };
 ---
@@ -13,12 +15,13 @@ const { title = 'Terapia Shalom - Masajes y Bienestar' } = Astro.props as { titl
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
+    <ViewTransitions ="700ms" /> 
   </head>
   <body class="bg-ts-background text-ts-text font-sans relative min-h-screen flex flex-col">
 
     <Navbar />
 
-    <main class="flex-grow"> 
+    <main class="flex-grow">
       <slot />
     </main>
 
@@ -26,10 +29,10 @@ const { title = 'Terapia Shalom - Masajes y Bienestar' } = Astro.props as { titl
       href="https://wa.me/56912345678"
       target="_blank"
       rel="noopener noreferrer"
-      class="fixed bottom-6 right-6 z-50 flex items-center justify-center w-14 h-14 bg-ts-primary hover:bg-ts-accent text-white rounded-full shadow-lg transition-transform duration-300 hover:scale-110"
+      class="group fixed bottom-6 right-6 z-50 flex items-center justify-center w-14 h-14 bg-ts-primary hover:bg-ts-accent rounded-full shadow-lg transition-transform duration-300 hover:scale-110"
       aria-label="Chatear por WhatsApp"
     >
-      <WhatsappIcon class="w-7 h-7 fill-current" />
+      <WhatsappIcon class="text-ts-accent group-hover:text-white" />
     </a>
 
     <Footer />

@@ -1,160 +1,214 @@
 ---
 // src/components/Navbar.astro
 
-// ASEGÚRATE DE QUE LA RUTA DEL ÍCONO SEA CORRECTA.
-// Por ejemplo, si FlowerIcon.astro está en src/components/icons/, la ruta es './icons/FlowerIcon.astro'
-import FlowerIcon from './icons/FlowerShalomIcon.astro'; 
+import FlowerIcon from "./icons/FlowerShalomIcon.astro";
 
 const navItems = [
-  {
-    title: "Inicio",
-    label: "inicio",
-    url: "/",
-  },
-  {
-    title: "Servicios",
-    label: "servicios",
-    url: "/servicios",
-  },
-  {
-    title: "Sobre Nosotros", // ¡NUEVO ENLACE AÑADIDO AQUÍ!
-    label: "sobre-nosotros",
-    url: "/sobrenosotros",
-  },
-  {
-    title: "Contacto",
-    label: "contacto",
-    url: "/contacto",
-  },
+  {
+    title: "Inicio",
+    label: "inicio",
+    url: "/", 
+  },
+  {
+    title: "Servicios",
+    label: "servicios",
+    url: "/servicios", // ¡CAMBIO: Vuelve a ser una ruta de página!
+  },
+  {
+    title: "Sobre Nosotros",
+    label: "sobre-nosotros",
+    url: "/sobrenosotros", // ¡CAMBIO: Vuelve a ser una ruta de página!
+  },
+  {
+    title: "Contacto",
+    label: "contacto",
+    url: "/contacto", // ¡CAMBIO: Vuelve a ser una ruta de página!
+  },
 ];
 
 const currentPath = Astro.url.pathname;
 ---
 
-<header
-  class="fixed top-0 z-10 flex items-center justify-center w-full mx-auto mt-2"
->
-  <nav
-    class="
-      flex px-3 text-sm font-medium rounded-full
-      text-ts-accent
-      justify-between items-center w-[90%] md:w-auto
-      bg-ts-background/50
-      backdrop-blur-sm
-      shadow-lg
-      ring-1 ring-ts-background/10
-    "
-    aria-label="Menú principal"
-  >
-    {/* Contenedor del ícono y texto "T/S" */}
-    <a href="/" class="text-2xl font-bold text-ts-primary flex-shrink-0 flex items-center space-x-2"> {/* Añadido 'flex items-center space-x-2' para alinear el ícono y texto */}
-      <FlowerIcon class="w-7 h-7 text-ts-primary" /> {/* Integración del ícono */}
-      <span></span>
-    </a>
+<header class="fixed top-0 left-0 w-full z-50">
+  <nav
+    class="flex px-4 py-3 text-sm font-medium
+      text-ts-accent
+      justify-between items-center w-full max-w-7xl mx-auto
+      bg-ts-background/50
+      backdrop-blur-md
+      shadow-lg
+      ring-1 ring-ts-background/10
+      rounded-full mt-4
+      transition-all duration-300 ease-in-out"
+    aria-label="Menú principal"
+  >
+    {/* Contenedor del ícono y texto "T/S" */}
+    <a
+      href="/"
+      class="text-2xl font-bold text-ts-primary flex-shrink-0 flex items-center space-x-2"
+    >
+      <FlowerIcon class="w-7 h-7 text-ts-primary" />
+      <span class="sr-only md:not-sr-only">TS</span>
+    </a>
 
-    <button id="menu-button" class="md:hidden focus:outline-none ml-4">
-      <svg
-        class="w-8 h-8 text-ts-accent"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          d="M4 6h16M4 12h16M4 18h16"
-        ></path>
-      </svg>
-    </button>
+    {/* Menú Desktop (oculto en móvil) */}
+    <ul class="hidden md:flex md:space-x-6 text-base" >
+      {
+        navItems.map((link) => (
+          <li>
+            <a
+              class={`relative block px-3 py-2 transition 
+                     hover:text-ts-primary 
+                     ${currentPath === link.url ? "text-ts-accent font-semibold" : "text-gray-700"}`}
+              aria-label={link.label}
+              href={link.url}
+            >
+              {link.title}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
 
-    <ul
-      id="menu"
-      class="hidden md:flex md:space-x-6 text-sm flex-col md:flex-row absolute md:relative top-full left-0 w-full md:w-auto bg-ts-background md:bg-transparent shadow-md md:shadow-none p-4 md:p-0 z-40"
-    >
-      {
-        navItems.map((link) => (
-          <li>
-            <a
-              class={`relative block px-3 py-2 transition hover:text-ts-primary ${
-                currentPath === link.url ? "text-ts-primary font-semibold" : ""
-              }`}
-              aria-label={link.label}
-              href={link.url}
-            >
-              {link.title}
-            </a>
-          </li>
-        ))
-      }
-    </ul>
-  </nav>
+
+    {/* Botón de Hamburguesa (visible solo en móvil) */}
+    <button
+      id="mobile-menu-button"
+      class="md:hidden text-ts-accent focus:outline-none z-50 p-2"
+    >
+      <svg
+        class="w-8 h-8"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M4 6h16M4 12h16M4 18h16"
+          ></path>
+        </svg>
+    </button>
+  </nav>
+
+  {/* Overlay primero */}
+  <div
+    id="mobile-menu-overlay"
+    class="fixed inset-0 bg-black opacity-0 pointer-events-none transition-opacity duration-300 ease-in-out z-40 md:hidden"
+  >
+ &#8203; {/* Carácter invisible para asegurar altura */}
+  </div>
+
+  {/* Panel después */}
+  <div
+    id="mobile-menu-panel"
+    class="fixed top-0 right-0 h-full w-3/4 max-w-xs bg-ts-background-dark transform translate-x-full transition-transform duration-300 ease-in-out md:hidden z-50 p-6 shadow-xl flex flex-col pt-20"
+  >
+    <button
+      id="mobile-menu-close-button"
+      class="absolute top-4 right-4 text-white focus:outline-none p-2"
+      aria-label="Cerrar menú"
+    >
+      <svg
+        class="w-8 h-8"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+    </button>
+    <div class="flex flex-col space-y-6">
+      {
+        navItems.map((link) => (
+          <a
+            href={link.url}
+            class="text-white hover:text-ts-accent text-2xl font-semibold transition duration-200"
+            class:list={{ "text-ts-accent": currentPath === link.url }}
+          >
+              {link.title}
+          </a>
+        ))
+      }
+    </div>
+  </div>
+
 </header>
 
 <script is:inline>
-  const menuButton = document.getElementById("menu-button");
-  const menu = document.getElementById("menu");
+  document.addEventListener("DOMContentLoaded", () => {
+    const mobileMenuButton = document.getElementById("mobile-menu-button");
+    const mobileMenuPanel = document.getElementById("mobile-menu-panel");
+    const mobileMenuCloseButton = document.getElementById(
+      "mobile-menu-close-button"
+    );
+    const mobileMenuOverlay = document.getElementById("mobile-menu-overlay");
 
-  const currentPath = window.location.pathname;
+    function openMobileMenu() {
+      mobileMenuPanel.classList.remove("translate-x-full");
+      mobileMenuPanel.classList.add("translate-x-0");
+      mobileMenuOverlay.classList.remove("opacity-0", "pointer-events-none");
+      mobileMenuOverlay.classList.add("opacity-60", "pointer-events-auto");
+      document.body.style.overflow = "hidden"; // Evita el scroll del fondo
+    }
 
-  if (menuButton && menu) {
-    menuButton.addEventListener("click", () => {
-      menu.classList.toggle("hidden");
-      menu.classList.toggle("flex");
-      menu.classList.toggle("active-menu");
-    });
+    function closeMobileMenu() {
+      mobileMenuPanel.classList.remove("translate-x-0");
+      mobileMenuPanel.classList.add("translate-x-full");
+      mobileMenuOverlay.classList.remove("opacity-60", "pointer-events-auto");
+      mobileMenuOverlay.classList.add("opacity-0", "pointer-events-none");
+      document.body.style.overflow = ""; // Restaura el scroll
+    }
 
-    menu.querySelectorAll("a").forEach((link) => {
-      link.addEventListener("click", () => {
-        if (window.innerWidth < 768) {
-          menu.classList.add("hidden");
-          menu.classList.remove("flex", "active-menu");
-        }
-      });
-    });
+    mobileMenuButton.addEventListener("click", openMobileMenu);
+    mobileMenuCloseButton.addEventListener("click", closeMobileMenu);
+    mobileMenuOverlay.addEventListener("click", closeMobileMenu); 
 
-    document.addEventListener("click", (event) => {
-      if (
-        !menu.contains(event.target) &&
-        !menuButton.contains(event.target) &&
-        window.innerWidth < 768
-      ) {
-        if (!menu.classList.contains("hidden")) {
-          menu.classList.add("hidden");
-          menu.classList.remove("flex");
-          menu.classList.remove("active-menu");
-        }
-      }
-    });
+    mobileMenuPanel.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", closeMobileMenu);
+    }); 
 
-    window.addEventListener("resize", () => {
-      if (window.innerWidth >= 768) {
-        menu.classList.remove("hidden", "flex", "active-menu");
-      } else {
-        menu.classList.add("hidden");
-        menu.classList.remove("flex", "active-menu");
-      }
-    });
-  }
+    window.addEventListener("resize", () => {
+      if (window.innerWidth >= 768) {
+        closeMobileMenu(); 
+      }
+    }); 
 
-  const navLinks = document.querySelectorAll('#menu a');
-  navLinks.forEach(link => {
-    // Asegurarse de que el currentPath coincida con la URL exacta
-    // Esto es importante para rutas como /servicios vs /
-    if (link.getAttribute('href') === currentPath) {
-      link.classList.add('text-ts-primary', 'font-semibold');
-    } else {
-      link.classList.remove('text-ts-primary', 'font-semibold');
-    }
-  });
+    const navLinks = document.querySelectorAll("#mobile-menu-panel a"); 
+    const desktopNavLinks = document.querySelectorAll("nav ul a"); 
+
+    function updateActiveLinks() {
+      const currentPathname = window.location.pathname;
+
+      navLinks.forEach((link) => {
+        if (link.getAttribute("href") === currentPathname) {
+          link.classList.add("text-ts-accent"); 
+          link.classList.remove("text-white");
+        } else {
+          link.classList.remove("text-ts-accent");
+          link.classList.add("text-white");
+        }
+      });
+
+      desktopNavLinks.forEach((link) => {
+        if (link.getAttribute("href") === currentPathname) {
+          link.classList.add("text-ts-accent", "font-semibold");
+          link.classList.remove("text-gray-700");
+        } else {
+          link.classList.remove("text-ts-accent", "font-semibold");
+          link.classList.add("text-gray-700");
+        }
+      });
+    }
+    updateActiveLinks();
+    document.addEventListener("astro:after-swap", updateActiveLinks);
+    // La línea window.addEventListener("hashchange", updateActiveLinks); ya no es necesaria aquí
+  });
 </script>
-
-<style>
-  #menu.active-menu {
-    border-top: 1px solid #eee;
-    padding-top: 1rem;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
-      0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  }
-</style>

@@ -1,3 +1,93 @@
+/* src/styles/global.css */
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Asegura que los títulos de las secciones no se oculten detrás del navbar fijo */
+/* Ajusta el valor (80px) para que coincida con la altura de tu Navbar */
+section[id] {
+  scroll-margin-top: 80px; /* Asumiendo que tu Navbar tiene una altura de 80px (equivalente a h-20) */
+}
+
+/* --- Custom CSS para ANIMACIONES --- */
+
+/* Animación de Zoom Sutil para la imagen de fondo del Hero */
+@keyframes subtleZoom {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.hero-background-animated {
+  background-size: 110% auto;
+  background-position: center center;
+  background-repeat: no-repeat;
+  filter: blur(2px);
+  background-attachment: fixed;
+
+  animation: subtleZoom 10s infinite alternate ease-in-out;
+  transform-origin: center center;
+}
+
+/* Ajustes para dispositivos móviles */
+@media (max-width: 768px) {
+  .hero-background-animated {
+    background-attachment: scroll;
+    background-size: cover !important;
+    animation: none !important;
+    filter: blur(1px); /* Ajuste opcional: menos blur en móvil */
+  }
+}
+
+/* Ajustes para el texto del Hero - Ahora se aplica a .hero-content-fade */
+.hero-content-fade h1 { 
+  text-shadow: 0 4px 6px rgba(0, 0, 0, 0.7);
+  font-weight: 800;
+}
+
+.hero-content-fade p { 
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+  color: #e0e0e0; 
+}
+
+
+/* --- Animaciones para Transiciones de Vista --- */
+@keyframes page-fade-in-up {
+from {
+  opacity: 0;
+  transform: translateY(20px);
+}
+to {
+  opacity: 1;
+  transform: translateY(0);
+}
+}
+
+@keyframes page-fade-out-down {
+from {
+  opacity: 1;
+  transform: translateY(0);
+}
+to {
+  opacity: 0;
+  transform: translateY(-20px);
+}
+}
+
+.page-transition-in {
+animation: page-fade-in-up 0.7s ease-out forwards;
+}
+
+.page-transition-out {
+animation: page-fade-out-down 0.7s ease-in forwards;
+}
+
+/* --- Fin Custom CSS --- */
+

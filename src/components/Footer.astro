@@ -1,7 +1,7 @@
 ---
 import CelularIcon from './icons/CelularIcon.astro'; 
 import MailIcon from './icons/MailIcon.astro'; 
-// import HorarioIcon from './icons/HorarioIcon.astro'; // <--- ¡Esta línea ha sido comentada o eliminada!
+ import HorarioIcon from './icons/HorarioIcon.astro';
 
 ---
 
@@ -12,14 +12,15 @@ import MailIcon from './icons/MailIcon.astro';
     <div class="flex flex-col md:flex-row justify-center items-center md:space-x-8 space-y-2 md:space-y-0 text-center text-sm">
       <p class="flex items-center justify-center">
         <CelularIcon class="w-4 h-4 mr-2" /> {/* Ícono de teléfono ya integrado */}
-        +56 9 1234 5678
+        +56 9 3587 5470
       </p>
       <p class="flex items-center justify-center">
         <MailIcon class="w-4 h-4 mr-2" /> {/* Ícono de correo ya integrado */}
         jimenavargas@terapiashalom.cl
       </p>
       <p class="flex items-center justify-center">
-        ⏰ Lunes a Viernes, 9:00 - 18:00 {/* <--- ¡De vuelta al emoji del reloj! */}
+        <HorarioIcon class="w-4 h-4 mr-2" /> {/* Ícono de correo ya integrado */}
+         Lunes a Viernes, 9:00 - 18:00 {/* <--- ¡De vuelta al emoji del reloj! */}
       </p>
     </div>
 

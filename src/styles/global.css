@@ -7,7 +7,7 @@
 /* Asegura que los títulos de las secciones no se oculten detrás del navbar fijo */
 /* Ajusta el valor (80px) para que coincida con la altura de tu Navbar */
 section[id] {
-  scroll-margin-top: 80px; /* Asumiendo que tu Navbar tiene una altura de 80px (equivalente a h-20) */
+  scroll-margin-top: 100px; /* Asumiendo que tu Navbar tiene una altura de 80px (equivalente a h-20) */
 }
 
 /* --- Custom CSS para ANIMACIONES --- */
@@ -90,4 +90,15 @@ animation: page-fade-out-down 0.7s ease-in forwards;
 }
 
 /* --- Fin Custom CSS --- */
+
+:root {
+  --navbar-height: 110px;
+}
+
+/* Si quieres ajustar para desktop, puedes usar media queries */
+@media (min-width: 760px) {
+  :root {
+    --navbar-height: 112px; /* Ejemplo para desktop, ajusta según tu navbar real */
+  }
+}
 

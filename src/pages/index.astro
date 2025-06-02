@@ -14,7 +14,7 @@ import Icon from 'astro-icon'; // Esta línea se mantiene porque ya estaba en tu
         class="absolute inset-0 hero-background-animated"
         style="background-image: url('/assets/FondoHero.jpg');"
       ></div>
-      <div class="absolute inset-0 bg-gradient-to-b from-[#000000cc] to-[#000000ee] md:from-[#00000080] md:to-[#000000cc]"></div>
+      <div class="absolute inset-0 bg-gradient-to-b from-[#00000080] to-[#000000cc]"></div>
       <div class="relative z-10 text-center max-w-3xl mx-auto px-4 pt-20 hero-content-fade">
         <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight drop-shadow-lg">
           Bienestar y Armonía <br> para tu Cuerpo y Mente
@@ -27,6 +27,32 @@ import Icon from 'astro-icon'; // Esta línea se mantiene porque ya estaba en tu
         </a>
       </div>
     </section>
+
+    <script is:inline>
+      function initHeroFade() {
+        const heroContent = document.querySelector('.hero-content-fade');
+        const fadeThreshold = 500;
+
+        function handleHeroFade() {
+          if (!heroContent) return;
+          const scrollY = window.scrollY;
+          let opacity = 1 - (scrollY / fadeThreshold);
+          opacity = Math.max(0, Math.min(1, opacity));
+          heroContent.style.opacity = opacity;
+          heroContent.style.pointerEvents = opacity <= 0.05 ? 'none' : 'auto'; 
+        }
+
+        handleHeroFade();
+        window.addEventListener('scroll', handleHeroFade);
+
+        document.addEventListener('astro:before-swap', () => {
+          window.removeEventListener('scroll', handleHeroFade);
+        });
+      }
+
+      document.addEventListener('DOMContentLoaded', initHeroFade);
+      document.addEventListener('astro:after-swap', initHeroFade);
+    </script>
 
     {/* SECCIÓN: Nuestros Servicios Destacados */}
     <section class="py-16 bg-ts-background-light"> {/* SIN ID aquí */}

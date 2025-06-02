@@ -41,8 +41,7 @@ section[id] {
   .hero-background-animated {
     background-attachment: scroll;
     background-size: cover !important;
-    animation: none !important;
-    filter: blur(1px); /* Ajuste opcional: menos blur en móvil */
+    filter: blur(2px); /* Ajuste opcional: menos blur en móvil */
   }
 }
 

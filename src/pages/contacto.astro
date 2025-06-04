@@ -11,22 +11,24 @@ import Layout from '../layouts/Layout.astro';
 
     <section class="max-w-xl mx-auto mt-10 p-8 bg-white rounded-lg shadow-md border border-ts-background/50">
       <h2 class="text-2xl font-semibold mb-6 text-ts-primary">Envíanos un Mensaje</h2>
-      <form class="space-y-4 text-left"> <div>
+      <form
+        id="contact-form"
+        class="space-y-4 text-left"
+        action="https://formspree.io/f/movwvdbo"
+        method="POST"
+        novalidate
+      >
+        <div>
           <label for="name" class="block text-ts-text text-sm font-medium mb-1">Nombre</label>
           <input
             type="text"
             id="name"
             name="name"
-            class="
-              mt-1 block w-full p-2
-              border border-ts-accent/40 rounded-md shadow-sm
-              focus:ring-ts-primary focus:border-ts-primary
-              sm:text-sm
-              bg-ts-background/70 text-ts-text
-              placeholder-ts-accent/60
-            "
+            required
+            class="mt-1 block w-full p-2 border border-ts-accent/40 rounded-md shadow-sm focus:ring-ts-primary focus:border-ts-primary sm:text-sm bg-ts-background/70 text-ts-text placeholder-ts-accent/60"
             placeholder="Tu Nombre"
           />
+          <p class="text-xs text-red-600 mt-1 hidden" id="name-error">Por favor, ingresa tu nombre.</p>
         </div>
         <div>
           <label for="email" class="block text-ts-text text-sm font-medium mb-1">Email</label>
@@ -34,16 +36,11 @@ import Layout from '../layouts/Layout.astro';
             type="email"
             id="email"
             name="email"
-            class="
-              mt-1 block w-full p-2
-              border border-ts-accent/40 rounded-md shadow-sm
-              focus:ring-ts-primary focus:border-ts-primary
-              sm:text-sm
-              bg-ts-background/70 text-ts-text
-              placeholder-ts-accent/60
-            "
+            required
+            class="mt-1 block w-full p-2 border border-ts-accent/40 rounded-md shadow-sm focus:ring-ts-primary focus:border-ts-primary sm:text-sm bg-ts-background/70 text-ts-text placeholder-ts-accent/60"
             placeholder="tu.email@example.com"
           />
+          <p class="text-xs text-red-600 mt-1 hidden" id="email-error">Por favor, ingresa un email válido.</p>
         </div>
         <div>
           <label for="message" class="block text-ts-text text-sm font-medium mb-1">Mensaje</label>
@@ -51,16 +48,11 @@ import Layout from '../layouts/Layout.astro';
             id="message"
             name="message"
             rows="4"
-            class="
-              mt-1 block w-full p-2
-              border border-ts-accent/40 rounded-md shadow-sm
-              focus:ring-ts-primary focus:border-ts-primary
-              sm:text-sm
-              bg-ts-background/70 text-ts-text
-              placeholder-ts-accent/60
-            "
+            required
+            class="mt-1 block w-full p-2 border border-ts-accent/40 rounded-md shadow-sm focus:ring-ts-primary focus:border-ts-primary sm:text-sm bg-ts-background/70 text-ts-text placeholder-ts-accent/60"
             placeholder="Escribe tu mensaje aquí..."
           ></textarea>
+          <p class="text-xs text-red-600 mt-1 hidden" id="message-error">Por favor, escribe tu mensaje.</p>
         </div>
         <button
           type="submit"
@@ -69,7 +61,66 @@ import Layout from '../layouts/Layout.astro';
           Enviar Mensaje
         </button>
       </form>
+      <div id="success-message" class="hidden mt-4 text-green-600 text-center font-semibold">
+        ¡Tu mensaje ha sido enviado correctamente!
+      </div>
     </section>
 
-    </main>
+    <script is:inline>
+      document.addEventListener('DOMContentLoaded', function () {
+        const form = document.getElementById('contact-form');
+        if (!form) return;
+        const successMessage = document.getElementById('success-message');
+        form.addEventListener('submit', function (e) {
+          let valid = true;
+
+          // Validación Nombre
+          const name = form.elements['name'];
+          const nameError = document.getElementById('name-error');
+          if (!name.value.trim()) {
+            nameError.classList.remove('hidden');
+            valid = false;
+          } else {
+            nameError.classList.add('hidden');
+          }
+
+          // Validación Email
+          const email = form.elements['email'];
+          const emailError = document.getElementById('email-error');
+          const emailPattern = /^[^@]+@[^@]+\.[a-zA-Z]{2,}$/;
+          if (!email.value.trim() || !emailPattern.test(email.value)) {
+            emailError.classList.remove('hidden');
+            valid = false;
+          } else {
+            emailError.classList.add('hidden');
+          }
+
+          // Validación Mensaje
+          const message = form.elements['message'];
+          const messageError = document.getElementById('message-error');
+          if (!message.value.trim()) {
+            messageError.classList.remove('hidden');
+            valid = false;
+          } else {
+            messageError.classList.add('hidden');
+          }
+
+          // Si no es válido, evita el envío
+          if (!valid) {
+            e.preventDefault();
+            successMessage.classList.add('hidden');
+          } else {
+            // Si es válido, deja que el formulario se envíe a Formspree
+            // Opcional: muestra mensaje de éxito solo si quieres evitar el reload
+            // e.preventDefault();
+            // form.reset();
+            // successMessage.classList.remove('hidden');
+            // setTimeout(() => {
+            //   successMessage.classList.add('hidden');
+            // }, 5000);
+          }
+        });
+      });
+    </script>
+  </main>
 </Layout>

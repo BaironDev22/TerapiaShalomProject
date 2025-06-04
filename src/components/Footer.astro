@@ -4,20 +4,21 @@ import MailIcon from './icons/MailIcon.astro';
 import HorarioIcon from './icons/HorarioIcon.astro';
 ---
 
-<footer class="mt-auto py-6 text-center bg-ts-background-dark text-ts-text border-t border-ts-accent/20 shadow-inner">
-  <div class="max-w-4xl mx-auto px-4">
-    <h3 class="text-lg font-semibold mb-2 text-ts-accent">Terapia Shalom</h3>
-    <div class="flex flex-col md:flex-row justify-center items-center md:space-x-8 space-y-2 md:space-y-0 text-center text-sm">
+<footer class="mt-auto py-6 bg-ts-background-dark text-ts-text border-t border-ts-accent/20 shadow-inner">
+  <div class="max-w-4xl mx-auto px-4 flex flex-col items-center">
+    <h3 class="text-2xl font-bold mb-1 text-ts-accent text-center tracking-wide">Terapia Shalom</h3>
+    <div class="flex flex-col sm:flex-row sm:flex-wrap sm:justify-center gap-1 sm:gap-4 items-center text-center text-sm mb-2">
       <p class="flex items-center justify-center">
         <CelularIcon class="w-4 h-4 mr-2" /> +56 9 3587 5470
       </p>
       <p class="flex items-center justify-center">
-        <MailIcon class="w-4 h-4 mr-2" /> jimenavargas@terapiashalom.cl
+        <MailIcon class="w-4 h-4 mr-2" /> t.shalomptomontt@gmail.com
       </p>
       <p class="flex items-center justify-center">
         <HorarioIcon class="w-4 h-4 mr-2" /> Lunes a Viernes, 9:00 - 18:00
       </p>
     </div>
-    <p class="mt-2 text-xs opacity-90">&copy; {new Date().getFullYear()} Terapia Shalom. Todos los derechos reservados.</p>
+    <hr class="w-full my-1 border-ts-accent/10" />
+    <p class="text-xs opacity-90 text-center mt-1 mb-0">&copy; {new Date().getFullYear()} Terapia Shalom. Todos los derechos reservados.</p>
   </div>
 </footer>

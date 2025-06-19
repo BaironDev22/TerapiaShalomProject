@@ -1,10 +1,6 @@
 ---
 // src/pages/index.astro
 import Layout from '../layouts/Layout.astro';
-import Navbar from '../components/Navbar.astro';
-import Footer from '../components/Footer.astro';
-import { Image } from 'astro:assets'; // Importación de Image para manejar imágenes de forma óptima	
-import Icon from 'astro-icon'; // Esta línea se mantiene porque ya estaba en tu código original.
 ---
 
 <Layout title="Inicio - Terapia Shalom: Bienestar y Armonía">
@@ -55,46 +51,58 @@ import Icon from 'astro-icon'; // Esta línea se mantiene porque ya estaba en tu
       document.addEventListener('astro:after-swap', initHeroFade);
     </script>
 
-    {/* SECCIÓN: Nuestros Servicios Destacados */}
-    <section class="py-16 bg-ts-background-light"> {/* SIN ID aquí */}
-     <div class="container mx-auto px-4 text-center">
-  <h2 class="text-3xl sm:text-4xl font-bold text-ts-primary mb-12">Nuestros Pilares de Bienestar</h2>
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-    {/* Tarjeta de Servicio 1 */}
-    <div class="bg-ts-background-dark p-8 rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition duration-300 ease-in-out flex flex-col items-center">
-    <Image 
-    src="/assets/Masoterapia.jpg" 
-    alt="Masoterapia Clínica" 
-    width={96} height={96}
-    class="w-24 h-24 object-cover rounded-full mb-4 shadow-lg transition-transform duration-500 hover:scale-110"
-    loading="lazy"
-  />
-  <h3 class="text-2xl font-semibold text-ts-text mb-3">Masoterapia Clínica</h3>
-  <p class="text-base text-ts-text mb-4">Alivia tensiones, reduce el dolor muscular y mejora la movilidad con técnicas profesionales.</p>
-  <a href="/servicios" class="text-ts-accent font-medium hover:underline">Saber más &rarr;</a>
-</div>
-    {/* Tarjeta de Servicio 2 */}
-    <div class="bg-ts-background-dark p-8 rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition duration-300 ease-in-out flex flex-col items-center">
-      <img src="/assets/Bienestar.jpg" alt="Relajación Profunda" class="w-24 h-24 object-cover rounded-full mb-4 shadow-lg transition-transform duration-500 hover:scale-110" loading="lazy" />
-      <h3 class="text-2xl font-semibold text-ts-text mb-3">Relajación Profunda</h3>
-      <p class="text-base text-ts-text mb-4">Encuentra la calma y el equilibrio interior, liberando el estrés acumulado día a día.</p>
-      <a href="/servicios" class="text-ts-accent font-medium hover:underline">Saber más &rarr;</a>
+  <section class="py-16 bg-ts-background-light">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-3xl sm:text-4xl font-bold text-ts-primary mb-12">Nuestros Pilares de Bienestar</h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+        <!-- Tarjeta 1 -->
+        <div class="bg-ts-background-dark p-8 rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition duration-300 ease-in-out flex flex-col items-center">
+          <img 
+            src="/assets/Masoterapia.jpg" 
+            alt="Masoterapia Clínica" 
+            class="w-24 h-24 object-cover rounded-full mb-4 shadow-lg transition-transform duration-500 hover:scale-110"
+            loading="lazy"
+          />
+          <h3 class="text-2xl font-semibold text-ts-text mb-3">Masoterapia Clínica</h3>
+          <p class="text-base text-ts-text mb-4">Alivia tensiones, reduce el dolor muscular y mejora la movilidad con técnicas profesionales.</p>
+          <a href="/servicios" class="text-ts-accent font-medium hover:underline">Saber más &rarr;</a>
+      </div>
+
+      <!-- Tarjeta 2 -->
+      <div class="bg-ts-background-dark p-8 rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition duration-300 ease-in-out flex flex-col items-center">
+        <img 
+          src="/assets/Bienestar.jpg" 
+          alt="Relajación Profunda" 
+          class="w-24 h-24 object-cover rounded-full mb-4 shadow-lg transition-transform duration-500 hover:scale-110"
+          loading="lazy"
+        />
+        <h3 class="text-2xl font-semibold text-ts-text mb-3">Relajación Profunda</h3>
+        <p class="text-base text-ts-text mb-4">Encuentra la calma y el equilibrio interior, liberando el estrés acumulado día a día.</p>
+        <a href="/servicios" class="text-ts-accent font-medium hover:underline">Saber más &rarr;</a>
+      </div>
+
+      <!-- Tarjeta 3 -->
+      <div class="bg-ts-background-dark p-8 rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition duration-300 ease-in-out flex flex-col items-center">
+        <img 
+          src="/assets/Meditacion.jpg" 
+          alt="Tratamientos Integrales" 
+          class="w-24 h-24 object-cover rounded-full mb-4 shadow-lg transition-transform duration-500 hover:scale-110"
+          loading="lazy"
+        />
+        <h3 class="text-2xl font-semibold text-ts-text mb-3">Tratamientos Integrales</h3>
+        <p class="text-base text-ts-text mb-4">Programas personalizados para abordar necesidades específicas de bienestar integral.</p>
+        <a href="/servicios" class="text-ts-accent font-medium hover:underline">Saber más &rarr;</a>
+      </div>
     </div>
-    {/* Tarjeta de Servicio 3 */}
-    <div class="bg-ts-background-dark p-8 rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition duration-300 ease-in-out flex flex-col items-center">
-      <img src="/assets/Meditacion.jpg" alt="Tratamientos Integrales" class="w-24 h-24 object-cover rounded-full mb-4 shadow-lg transition-transform duration-500 hover:scale-110" loading="lazy" />
-      <h3 class="text-2xl font-semibold text-ts-text mb-3">Tratamientos Integrales</h3>
-      <p class="text-base text-ts-text mb-4">Programas personalizados para abordar necesidades específicas de bienestar integral.</p>
-      <a href="/servicios" class="text-ts-accent font-medium hover:underline">Saber más &rarr;</a>
+
+    <div class="mt-12">
+      <a href="/servicios" class="bg-ts-primary text-white py-3 px-8 rounded-full text-lg font-semibold hover:bg-ts-accent transition duration-300 ease-in-out shadow-lg">
+        Ver Todos los Servicios
+      </a>
     </div>
   </div>
-  <div class="mt-12">
-    <a href="/servicios" class="bg-ts-primary text-white py-3 px-8 rounded-full text-lg font-semibold hover:bg-ts-accent transition duration-300 ease-in-out shadow-lg">
-      Ver Todos los Servicios
-    </a>
-  </div>
-</div>
-    </section>
+</section>
 
     {/* SECCIÓN: Nuestra Filosofía (Mini "Sobre Nosotros") */}
     <section class="py-16 bg-ts-background-dark"> {/* SIN ID aquí */}

@@ -6,7 +6,7 @@ import Layout from '../layouts/Layout.astro';
 <Layout title="Inicio - Terapia Shalom: Bienestar y Armonía">
   <main>
     {/* SECCIÓN HÉROE */}
-    <section class="relative h-screen flex items-center justify-center text-white overflow-hidden">
+    <section class="relative h-screen flex items-center justify-center text-white overflow-hidden" data-aos="fade-in" data-aos-delay="300">
       <div 
         class="absolute inset-0 hero-background-animated"
         style="background-image: url('/assets/FondoHero.jpg');"
@@ -49,9 +49,12 @@ import Layout from '../layouts/Layout.astro';
 
       document.addEventListener('DOMContentLoaded', initHeroFade);
       document.addEventListener('astro:after-swap', initHeroFade);
+
+    import AOS from 'aos';
+      AOS.init
     </script>
 
-  <section class="py-16 bg-ts-background-light">
+  <section class="py-16 bg-ts-background-light" >
     <div class="container mx-auto px-4 text-center">
       <h2 class="text-3xl sm:text-4xl font-bold text-ts-primary mb-12">Nuestros Pilares de Bienestar</h2>
 

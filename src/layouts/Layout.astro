@@ -1,10 +1,8 @@
 ---
-// src/layouts/Layout.astro
 import '../styles/global.css';
 import Navbar from '../components/Navbar.astro';
 import WhatsappIcon from '../components/icons/WTSP.astro';
 import Footer from '../components/Footer.astro';
-import { ViewTransitions } from 'astro:transitions';
 
 const { title = 'Terapia Shalom - Masajes y Bienestar' } = Astro.props as { title?: string };
 ---
@@ -14,17 +12,18 @@ const { title = 'Terapia Shalom - Masajes y Bienestar' } = Astro.props as { titl
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{title}</title>
-    <ViewTransitions ="700ms" /> 
+    <title>{title}</title>  
   </head>
   <body class="bg-ts-background text-ts-text font-sans relative min-h-screen flex flex-col">
+    <script type="module">
+      import { initAOS } from '../scripts/aos-global.js';
+      initAOS();
+    </script>
 
     <Navbar />
-
     <main class="flex-grow">
       <slot />
     </main>
-
     <a
       href="https://wa.me/56935875470"
       target="_blank"
@@ -34,8 +33,6 @@ const { title = 'Terapia Shalom - Masajes y Bienestar' } = Astro.props as { titl
     >
       <WhatsappIcon class="text-ts-accent group-hover:text-white" />
     </a>
-
     <Footer />
-
   </body>
 </html>

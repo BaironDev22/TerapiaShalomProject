@@ -1,15 +1,21 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import 'aos/dist/aos.css'; //
+import 'aos/dist/aos.css';
 ---
 <meta name="viewport" content="width=device-width" />
 <meta name="generator" content={Astro.generator} />
+
 <Layout title="Servicios - Terapia Shalom">
   <main class="p-4 sm:p-8 text-center" style="padding-top: var(--navbar-height);">
-    <h1 class="text-5xl font-bold mb-6 text-ts-accent">Nuestros Servicios</h1>
-    <p class="text-lg text-ts-text max-w-2xl mx-auto">
+    <!-- Título y subtítulo con AOS -->
+    <h1 class="text-5xl font-bold mb-6 text-ts-accent" data-aos="fade-down" data-aos-delay="50">
+      Nuestros Servicios
+    </h1>
+    <p class="text-lg text-ts-text max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100">
       Descubre la variedad de masajes terapéuticos y tratamientos que ofrecemos para tu bienestar.
     </p>
+
+    <!-- Cards con animaciones y delays progresivos -->
     <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-10">
       <div class="bg-ts-background p-6 rounded-lg shadow-xl border-2 border-ts-accent/30 flex flex-col items-center transition-transform duration-300 hover:scale-105 hover:shadow-2xl" data-aos="fade-up" data-aos-delay="100">
         <img src="/assets/relajacion.jpg" alt="Masaje de Relajación" class="w-32 h-32 object-cover rounded-full mb-4 shadow-lg transition-transform duration-500 hover:scale-110" loading="lazy" />
@@ -42,15 +48,24 @@ import 'aos/dist/aos.css'; //
         <p class="text-ts-text text-center">Ofrecemos una gama de tratamientos estéticos personalizados diseñados para revitalizar la piel y realzar la belleza natural. Empleamos productos de alta calidad y técnicas avanzadas para resultados óptimos.</p>
       </div>
     </section>
-    <div class="mt-12 flex justify-center">
+
+    <!-- CTA con animación -->
+    <div class="mt-12 flex justify-center" data-aos="zoom-in" data-aos-delay="400">
       <a href="/contacto" class="bg-ts-primary text-white px-8 py-3 rounded-full shadow-lg hover:bg-ts-accent hover:scale-105 transition font-semibold text-lg focus:outline-none focus:ring-2 focus:ring-ts-accent">
         Agenda tu cita
       </a>
     </div>
   </main>
 
+  <!-- Inicialización de AOS -->
   <script>
     import AOS from 'aos';
-    AOS.init()
+    AOS.init({
+    duration: 800,
+    easing: 'ease-in-out',
+    once: false,   // Permite repetir la animación
+    });
+AOS.refresh();
   </script>
 </Layout>
+

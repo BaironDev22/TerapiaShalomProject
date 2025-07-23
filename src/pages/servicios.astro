@@ -1,7 +1,9 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import 'aos/dist/aos.css'; //
 ---
-
+<meta name="viewport" content="width=device-width" />
+<meta name="generator" content={Astro.generator} />
 <Layout title="Servicios - Terapia Shalom">
   <main class="p-4 sm:p-8 text-center" style="padding-top: var(--navbar-height);">
     <h1 class="text-5xl font-bold mb-6 text-ts-accent">Nuestros Servicios</h1>
@@ -46,4 +48,9 @@ import Layout from '../layouts/Layout.astro';
       </a>
     </div>
   </main>
+
+  <script>
+    import AOS from 'aos';
+    AOS.init()
+  </script>
 </Layout>

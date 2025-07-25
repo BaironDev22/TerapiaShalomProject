@@ -1,33 +1,30 @@
 ---
-// src/pages/index.astro
 import Layout from '../layouts/Layout.astro';
 import 'aos/dist/aos.css';
 ---
 
 <Layout title="Inicio - Terapia Shalom: Bienestar y Armonía">
   <main>
-    {/* SECCIÓN HÉROE */}
+    <!-- SECCIÓN HÉROE -->
     <section
       class="relative h-screen flex items-center justify-center text-white overflow-hidden"
       data-aos="fade-in"
-      data-aos-delay="250"
+      data-aos-delay="100"
     >
-      <div
-        class="absolute inset-0 hero-background-animated"
-        style="background-image: url('/assets/FondoHero.jpg');"
-      ></div>
-      <div class="absolute inset-0 bg-gradient-to-b from-[#00000080] to-[#000000cc]"></div>
-      <div
-        class="relative z-10 text-center max-w-3xl mx-auto px-4 pt-20 hero-content-fade"
-      >
-        <h1
-          class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight drop-shadow-lg"
-        >
+      <img
+        src="/assets/FondoHero.jpg"
+        alt="Fondo de sesión terapéutica relajante"
+        class="absolute inset-0 object-cover w-full h-full z-0"
+        loading="eager"
+        fetchpriority="high"
+      />
+      <div class="absolute inset-0 bg-gradient-to-b from-[#00000080] to-[#000000cc] z-10"></div>
+      <div class="relative z-20 text-center max-w-3xl mx-auto px-4 pt-20 hero-content-fade">
+        <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight drop-shadow-lg">
           Bienestar y Armonía <br /> para tu Cuerpo y Mente
         </h1>
         <p class="text-base sm:text-lg md:text-xl lg:text-2xl mb-8 drop-shadow">
-          En Terapia Shalom, te ofrecemos un santuario de sanación y relajación
-          profunda a través de masajes terapéuticos y tratamientos integrales.
+          En Terapia Shalom, te ofrecemos un santuario de sanación y relajación profunda a través de masajes terapéuticos y tratamientos integrales.
         </p>
         <a
           href="/servicios"
@@ -39,7 +36,7 @@ import 'aos/dist/aos.css';
     </section>
 
     <script is:inline>
-      function initHeroFade() {
+      document.addEventListener('DOMContentLoaded', () => {
         const heroContent = document.querySelector('.hero-content-fade');
         const fadeThreshold = 500;
 
@@ -58,89 +55,60 @@ import 'aos/dist/aos.css';
         document.addEventListener('astro:before-swap', () => {
           window.removeEventListener('scroll', handleHeroFade);
         });
-      }
-
-      document.addEventListener('DOMContentLoaded', initHeroFade);
-      document.addEventListener('astro:after-swap', initHeroFade);
+      });
     </script>
 
+    <!-- SECCIÓN: Pilares -->
     <section class="py-16 bg-ts-background-light">
       <div class="container mx-auto px-4 text-center">
         <h2 class="text-3xl sm:text-4xl font-bold text-ts-primary mb-12" data-aos="fade-up" data-aos-delay="100">
           Nuestros Pilares de Bienestar
         </h2>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-10" data-aos="fade-up" data-aos-delay="200" >
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10" data-aos="fade-up" data-aos-delay="200">
           <!-- Tarjeta 1 -->
-          <div
-            class="bg-ts-background-dark p-8 rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition duration-300 ease-in-out flex flex-col items-center"
-          >
+          <div class="bg-ts-background-dark p-8 rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition duration-300 ease-in-out flex flex-col items-center">
             <img
               src="/assets/Masoterapia.jpg"
-              alt="Masoterapia Clínica"
+              alt="Masaje terapéutico profesional"
               class="w-24 h-24 object-cover rounded-full mb-4 shadow-lg transition-transform duration-500 hover:scale-110"
               loading="lazy"
             />
-            <h3 class="text-2xl font-semibold text-ts-text mb-3">
-              Masoterapia Clínica
-            </h3>
+            <h3 class="text-2xl font-semibold text-ts-text mb-3">Masoterapia Clínica</h3>
             <p class="text-base text-ts-text mb-4">
-              Alivia tensiones, reduce el dolor muscular y mejora la movilidad con
-              técnicas profesionales.
+              Alivia tensiones, reduce el dolor muscular y mejora la movilidad con técnicas profesionales.
             </p>
-            <a
-              href="/servicios"
-              class="text-ts-accent font-medium hover:underline"
-              >Saber más &rarr;</a
-            >
+            <a href="/servicios" class="text-ts-accent font-medium hover:underline">Saber más &rarr;</a>
           </div>
 
           <!-- Tarjeta 2 -->
-          <div
-            class="bg-ts-background-dark p-8 rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition duration-300 ease-in-out flex flex-col items-center"
-          >
+          <div class="bg-ts-background-dark p-8 rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition duration-300 ease-in-out flex flex-col items-center">
             <img
               src="/assets/Bienestar.jpg"
-              alt="Relajación Profunda"
+              alt="Terapia para relajación profunda"
               class="w-24 h-24 object-cover rounded-full mb-4 shadow-lg transition-transform duration-500 hover:scale-110"
               loading="lazy"
             />
-            <h3 class="text-2xl font-semibold text-ts-text mb-3">
-              Relajación Profunda
-            </h3>
+            <h3 class="text-2xl font-semibold text-ts-text mb-3">Relajación Profunda</h3>
             <p class="text-base text-ts-text mb-4">
-              Encuentra la calma y el equilibrio interior, liberando el estrés
-              acumulado día a día.
+              Encuentra la calma y el equilibrio interior, liberando el estrés acumulado día a día.
             </p>
-            <a
-              href="/servicios"
-              class="text-ts-accent font-medium hover:underline"
-              >Saber más &rarr;</a
-            >
+            <a href="/servicios" class="text-ts-accent font-medium hover:underline">Saber más &rarr;</a>
           </div>
 
           <!-- Tarjeta 3 -->
-          <div
-            class="bg-ts-background-dark p-8 rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition duration-300 ease-in-out flex flex-col items-center"
-          >
+          <div class="bg-ts-background-dark p-8 rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition duration-300 ease-in-out flex flex-col items-center">
             <img
               src="/assets/Meditacion.jpg"
-              alt="Tratamientos Integrales"
+              alt="Tratamiento holístico personalizado"
               class="w-24 h-24 object-cover rounded-full mb-4 shadow-lg transition-transform duration-500 hover:scale-110"
               loading="lazy"
             />
-            <h3 class="text-2xl font-semibold text-ts-text mb-3">
-              Tratamientos Integrales
-            </h3>
+            <h3 class="text-2xl font-semibold text-ts-text mb-3">Tratamientos Integrales</h3>
             <p class="text-base text-ts-text mb-4">
-              Programas personalizados para abordar necesidades específicas de
-              bienestar integral.
+              Programas personalizados para abordar necesidades específicas de bienestar integral.
             </p>
-            <a
-              href="/servicios"
-              class="text-ts-accent font-medium hover:underline"
-              >Saber más &rarr;</a
-            >
+            <a href="/servicios" class="text-ts-accent font-medium hover:underline">Saber más &rarr;</a>
           </div>
         </div>
 
@@ -155,30 +123,27 @@ import 'aos/dist/aos.css';
       </div>
     </section>
 
-    {/* SECCIÓN: Nuestra Filosofía (Mini "Sobre Nosotros") */}
+    <!-- SECCIÓN: Nuestra Filosofía -->
     <section class="py-16 bg-ts-background-dark">
-      {/* SIN ID aquí */}
       <div class="container mx-auto px-4 max-w-4xl text-center" data-aos="fade-up" data-aos-delay="100">
         <h2 class="text-3xl sm:text-4xl font-bold text-ts-primary mb-8" data-aos="fade-right" data-aos-delay="100">
           Nuestra Filosofía
         </h2>
         <p class="text-base sm:text-lg md:text-xl text-ts-text leading-relaxed mb-6" data-aos="fade-right" data-aos-delay="200">
-          En Terapia Shalom, creemos en un enfoque holístico para la salud, donde
-          el bienestar físico y emocional se entrelazan. Nos dedicamos a crear un
-          ambiente de confianza y comprensión, acompañándote en cada paso hacia
-          una vida más plena y consciente.
+          En Terapia Shalom, creemos en un enfoque holístico para la salud, donde el bienestar físico y emocional se entrelazan. Nos dedicamos a crear un ambiente de confianza y comprensión, acompañándote en cada paso hacia una vida más plena y consciente.
         </p>
         <a
           href="/sobrenosotros"
-          class="text-ts-accent font-semibold text-lg hover:underline" data-aos="fade-right" data-aos-delay="300"
-          >Conoce Más Sobre Nosotros &rarr;</a
+          class="text-ts-accent font-semibold text-lg hover:underline"
+          data-aos="fade-right" data-aos-delay="300"
         >
+          Conoce Más Sobre Nosotros &rarr;
+        </a>
       </div>
     </section>
 
-    {/* SECCIÓN: Llamada a la Acción Final */}
+    <!-- SECCIÓN: Llamada a la Acción Final -->
     <section class="py-16 bg-ts-primary text-white text-center">
-      {/* SIN ID aquí */}
       <div class="container mx-auto px-4 max-w-3xl">
         <h2 class="text-3xl sm:text-4xl font-bold mb-6">
           ¿Listo para comenzar tu camino hacia el bienestar?
@@ -196,38 +161,15 @@ import 'aos/dist/aos.css';
     </section>
   </main>
 
-  <script is:inline>
-    document.addEventListener('DOMContentLoaded', () => {
-      const heroContent = document.querySelector('.hero-content-fade');
-      const fadeThreshold = 500; // Ajusta este valor para un desvanecimiento más rápido o más lento
-
-      function handleHeroFade() {
-        if (!heroContent) return;
-
-        const scrollY = window.scrollY;
-        let opacity = 1 - scrollY / fadeThreshold;
-        opacity = Math.max(0, Math.min(1, opacity));
-
-        heroContent.style.opacity = opacity;
-        heroContent.style.pointerEvents = opacity <= 0.05 ? 'none' : 'auto';
-      }
-
-      handleHeroFade();
-      window.addEventListener('scroll', handleHeroFade);
-
-      document.addEventListener('astro:before-swap', () => {
-        window.removeEventListener('scroll', handleHeroFade);
-      });
-    });
-  </script>
-
+  <!-- Script AOS directo (mientras no se externaliza) -->
   <script>
     import AOS from 'aos';
     AOS.init({
-    duration: 800,
-    easing: 'ease-in-out',
-    once: false,   // Permite repetir la animación
+      duration: 800,
+      easing: 'ease-in-out',
+      once: false,
     });
-AOS.refresh();
+    AOS.refresh();
   </script>
 </Layout>
+

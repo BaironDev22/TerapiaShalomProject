@@ -15,12 +15,11 @@ const { title = 'Terapia Shalom - Masajes y Bienestar' } = Astro.props as { titl
     <title>{title}</title>  
   </head>
   <body class="bg-ts-background text-ts-text font-sans relative min-h-screen flex flex-col">
-    <script type="module">
+    <Navbar />
+     <script type="module">
       import { initAOS } from '../scripts/aos-global.js';
       initAOS();
     </script>
-
-    <Navbar />
     <main class="flex-grow">
       <slot />
     </main>

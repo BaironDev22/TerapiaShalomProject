@@ -1,20 +1,19 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import 'aos/dist/aos.css';
 ---
 
 <Layout title="Contacto - Terapia Shalom">
   <main class="p-8 text-center pt-32">
-    <h1 class="text-5xl font-bold mb-6 text-ts-accent">Contáctanos</h1>
-    <p class="text-lg text-ts-text max-w-2xl mx-auto">
-      ¿Tienes preguntas? Estamos aquí para ayudarte. Rellena el formulario o contáctanos por WhatsApp.
+    <h1 class="text-5xl font-bold mb-6 text-ts-accent" data-aos="fade-down" data-aos-delay="50">Contáctanos</h1>
+    <p class="text-lg text-ts-text max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100">
+      ¿Tienes preguntas o quieres reservar? Estamos aquí para ayudarte. Rellena el formulario o contáctanos por WhatsApp.
     </p>
-
-    <section class="max-w-xl mx-auto mt-10 p-8 bg-white rounded-lg shadow-md border border-ts-background/50">
+    <section class="max-w-xl mx-auto mt-10 p-8 bg-white rounded-lg shadow-md border border-ts-background/50" data-aos="fade-up" data-aos-delay="150">
       <h2 class="text-2xl font-semibold mb-6 text-ts-primary">Envíanos un Mensaje</h2>
       <form
         id="contact-form"
         class="space-y-4 text-left"
-        action="https://formspree.io/f/movwvdbo"
         method="POST"
       >
         <div>
@@ -60,66 +59,99 @@ import Layout from '../layouts/Layout.astro';
           Enviar Mensaje
         </button>
       </form>
-      <div id="success-message" class="hidden mt-4 text-green-600 text-center font-semibold">
+      <div id="success-message" class="hidden mt-4 text-ts-primary text-center font-semibold">
         ¡Tu mensaje ha sido enviado correctamente!
       </div>
     </section>
 
     <script is:inline>
-      document.addEventListener('DOMContentLoaded', function () {
-        const form = document.getElementById('contact-form');
-        if (!form) return;
-        const successMessage = document.getElementById('success-message');
-        form.addEventListener('submit', function (e) {
-          let valid = true;
+    document.addEventListener('DOMContentLoaded', function () {
+    const form = document.getElementById('contact-form');
+    const successMessage = document.getElementById('success-message');
 
-          // Validación Nombre
-          const name = form.elements['name'];
-          const nameError = document.getElementById('name-error');
-          if (!name.value.trim()) {
-            nameError.classList.remove('hidden');
-            valid = false;
-          } else {
-            nameError.classList.add('hidden');
-          }
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault(); // Prevenir envío tradicional
 
-          // Validación Email
-          const email = form.elements['email'];
-          const emailError = document.getElementById('email-error');
-          const emailPattern = /^[^@]+@[^@]+\.[a-zA-Z]{2,}$/;
-          if (!email.value.trim() || !emailPattern.test(email.value)) {
-            emailError.classList.remove('hidden');
-            valid = false;
-          } else {
-            emailError.classList.add('hidden');
-          }
+      let valid = true;
 
-          // Validación Mensaje
-          const message = form.elements['message'];
-          const messageError = document.getElementById('message-error');
-          if (!message.value.trim()) {
-            messageError.classList.remove('hidden');
-            valid = false;
-          } else {
-            messageError.classList.add('hidden');
-          }
+      // Validación Nombre
+      const name = form.elements['name'];
+      const nameError = document.getElementById('name-error');
+      if (!name.value.trim()) {
+        nameError.classList.remove('hidden');
+        valid = false;
+      } else {
+        nameError.classList.add('hidden');  
+      }
 
-          // Si no es válido, evita el envío
-          if (!valid) {
-            e.preventDefault();
-            successMessage.classList.add('hidden');
-          } else {
-            // Si es válido, deja que el formulario se envíe a Formspree
-            // Opcional: muestra mensaje de éxito solo si quieres evitar el reload
-            // e.preventDefault();
-            // form.reset();
-            // successMessage.classList.remove('hidden');
-            // setTimeout(() => {
-            //   successMessage.classList.add('hidden');
-            // }, 5000);
-          }
+      // Validación Email
+      const email = form.elements['email'];
+      const emailError = document.getElementById('email-error');
+      const emailPattern = /^[^@]+@[^@]+\.[a-zA-Z]{2,}$/;
+      if (!email.value.trim() || !emailPattern.test(email.value)) {
+        emailError.classList.remove('hidden');
+        valid = false;
+      } else {
+        emailError.classList.add('hidden');
+      }
+
+      // Validación Mensaje
+      const message = form.elements['message'];
+      const messageError = document.getElementById('message-error');
+      if (!message.value.trim()) {
+        messageError.classList.remove('hidden');
+        valid = false;
+      } else {
+        messageError.classList.add('hidden');
+      }
+
+      if (!valid) {
+        successMessage.classList.add('hidden');
+        return;
+      }
+
+      // Enviar datos a Formspree sin recargar
+      try {
+        const response = await fetch("https://formspree.io/f/movwvdbo", {
+          method: "POST",
+          headers: {
+            "Accept": "application/json",
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            name: name.value,
+            email: email.value,
+            message: message.value
+          })
         });
+
+        if (response.ok) {
+          form.reset();
+          successMessage.classList.remove('hidden');
+          setTimeout(() => {
+            successMessage.classList.add('hidden');
+          }, 5000);
+        } else {
+          alert("Error al enviar el formulario. Inténtalo nuevamente.");
+        }
+      } catch (error) {
+        console.error("Error:", error);
+        alert("Ocurrió un error inesperado.");
+      }
+    });
+  });
+</script>
+
+
+    
+    <script>
+      import AOS from 'aos';
+      AOS.init({
+        duration: 800,
+        easing: 'ease-in-out',
+        once: false, // Permite repetir la animación
       });
+      AOS.refresh();
     </script>
   </main>
 </Layout>

@@ -6,7 +6,6 @@ import Footer from '../components/Footer.astro';
 
 const { title = 'Terapia Shalom - Masajes y Bienestar' } = Astro.props as { title?: string };
 ---
-
 <!DOCTYPE html>
 <html lang="es">
   <head>
@@ -16,22 +15,28 @@ const { title = 'Terapia Shalom - Masajes y Bienestar' } = Astro.props as { titl
   </head>
   <body class="bg-ts-background text-ts-text font-sans relative min-h-screen flex flex-col">
     <Navbar />
-     <script type="module">
-      import { initAOS } from '../scripts/aos-global.js';
-      initAOS();
-    </script>
     <main class="flex-grow">
       <slot />
     </main>
-    <a
-      href="https://wa.me/56935875470"
-      target="_blank"
-      rel="noopener noreferrer"
-      class="group fixed bottom-6 right-6 z-50 flex items-center justify-center w-14 h-14 bg-ts-primary hover:bg-ts-accent rounded-full shadow-lg transition-transform duration-300 hover:scale-110"
-      aria-label="Chatear por WhatsApp"
-    >
-      <WhatsappIcon class="text-ts-accent group-hover:text-white" />
-    </a>
+    <!-- Contenedor de botón + texto -->
+  <div class="fixed bottom-6 right-6 z-50 flex items-center gap-2 sm:gap-3 group">
+  <!-- Texto flotante -->
+  <div
+    class="bg-ts-accent text-white text-xs sm:text-sm px-2 sm:px-3 py-1 rounded-full shadow-xl transition-opacity duration-300 group-hover:opacity-100 opacity-90"
+  >
+    ¡Háblanos aquí!
+  </div>
+  <!-- Botón de WhatsApp con hover estilo 'Descubre nuestros servicios' -->
+  <a
+    href="https://wa.me/56935875470"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="w-12 h-12 sm:w-14 sm:h-14 bg-ts-accent text-white flex items-center justify-center rounded-full shadow-xl transition duration-300 ease-in-out hover:bg-ts-primary hover:scale-105 focus:ring-2 focus:ring-ts-primary focus:outline-none"
+    aria-label="Chatear por WhatsApp"
+  >
+    <WhatsappIcon class="w-5 h-5 sm:w-6 sm:h-6" />
+  </a>
+  </div>
     <Footer />
   </body>
 </html>

@@ -5,88 +5,423 @@ import 'aos/dist/aos.css';
 ---
 
 <Layout title="Sobre Nosotros - Terapia Shalom">
-  <main class="container mx-auto pt-32">
-    <section class="text-center mb-12">
-      <h1 class="text-5xl font-bold text-ts-accent mb-4" data-aos="fade-down" data-aos-delay="50" >Sobre Nosotros</h1>
-      <p class="text-lg text-ts-text max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100">
-        Conoce la historia, la misión y los valores que nos guían en Terapia Shalom.
-      </p>
+  <main>
+    <!-- Hero Section mejorado -->
+    <section class="relative bg-gradient-to-br from-ts-background-light via-white to-ts-background-light pt-24 sm:pt-28 md:pt-32 pb-12 sm:pb-16 md:pb-20">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-ts-accent mb-4 sm:mb-6" data-aos="fade-down" data-aos-delay="50">
+          Sobre Nosotros
+        </h1>
+        <p class="text-base sm:text-lg md:text-xl text-ts-text max-w-2xl md:max-w-3xl mx-auto leading-relaxed px-4" data-aos="fade-up" data-aos-delay="100">
+          Conoce la historia, la misión y los valores que nos guían en Terapia Shalom hacia tu bienestar integral.
+        </p>
+        <div class="mt-6 sm:mt-8 w-16 sm:w-20 md:w-24 h-1 bg-gradient-to-r from-ts-primary to-ts-accent mx-auto rounded-full" data-aos="fade-up" data-aos-delay="150"></div>
+      </div>
     </section>
 
-    {/* SECCIÓN: Nuestra Historia */}
-    <section
-      class="max-w-4xl mx-auto bg-ts-background-dark p-8 rounded-lg shadow-xl border-2 border-ts-accent/40 mb-12 transition-transform duration-300 hover:scale-105 hover:shadow-2xl"
-      data-aos="fade-up"
-      data-aos-delay="200"
-      
-    >
-      <h2 class="text-3xl font-semibold text-ts-primary mb-6 text-center border-b-2 border-ts-accent/30 pb-4">Nuestra Historia</h2>
-      <p class="text-ts-text leading-relaxed mb-4">
-        Terapia Shalom nació de la visión de un espacio seguro y de apoyo donde las personas pudieran encontrar la sanación y el crecimiento. Fundada por la especialista certificada Jimena Vargas, con años de experiencia en masoterapia clínica, nuestro objetivo fue crear una comunidad de apoyo que aborde las necesidades emocionales y mentales con empatía y profesionalismo.
-      </p>
-      <p class="text-ts-text leading-relaxed">
-        Desde nuestros inicios en 2023, hemos crecido para ofrecer una amplia gama de servicios, siempre manteniendo nuestro compromiso con la excelencia y el bienestar integral de nuestros pacientes.
-      </p>
-    </section>
-
-    {/* SECCIÓN: Nuestra Misión */}
-    <section
-      class="max-w-4xl mx-auto bg-ts-background-dark p-8 rounded-lg shadow-xl border-2 border-ts-accent/40 mb-12 transition-transform duration-300 hover:scale-105 hover:shadow-2xl"
-      data-aos="fade-up"
-      data-aos-delay="300"
-      
-    >
-      <h2 class="text-3xl font-semibold text-ts-primary mb-6 text-center border-b-2 border-ts-accent/30 pb-4">Nuestra Misión</h2>
-      <p class="text-ts-text leading-relaxed text-center text-lg">
-        En Terapia Shalom, nuestra misión es acompañar a nuestros pacientes en su camino hacia el equilibrio emocional y el bienestar mental, proporcionando herramientas y estrategias personalizadas para una vida plena y consciente.
-      </p>
-    </section>
-
-    {/* SECCIÓN: Nuestros Valores */}
-    <section
-      class="max-w-4xl mx-auto bg-ts-background-dark p-8 rounded-lg shadow-xl border-2 border-ts-accent/40 mb-12 transition-transform duration-300 hover:scale-105 hover:shadow-2xl"
-      data-aos="fade-up"
-      data-aos-delay="400"
-    >
-      <h2 class="text-3xl font-semibold text-ts-primary mb-6 text-center border-b-2 border-ts-accent/30 pb-4">Nuestros Valores</h2>
-      <ul class="list-disc list-inside text-ts-text grid grid-cols-1 md:grid-cols-2 gap-4">
-        <li class="mb-2"><strong>Empatía:</strong> Escuchamos y comprendemos las experiencias de nuestros pacientes sin juicio.</li>
-        <li class="mb-2"><strong>Integridad:</strong> Actuamos con honestidad, ética y transparencia en todas nuestras interacciones.</li>
-        <li class="mb-2"><strong>Profesionalismo:</strong> Ofrecemos servicios de la más alta calidad, basados en la evidencia y la formación continua.</li>
-        <li class="mb-2"><strong>Confidencialidad:</strong> Garantizamos la privacidad y seguridad de toda la información de nuestros pacientes.</li>
-      </ul>
-    </section>
-
-    {/* SECCIÓN: Conoce a Nuestro Equipo */}
-    <section
-      class="max-w-4xl mx-auto mt-12 bg-ts-background-dark p-8 rounded-lg shadow-xl border-2 border-ts-accent/40 transition-transform duration-300 hover:scale-105 hover:shadow-2xl"
-      data-aos="fade-up"
-      data-aos-delay="450"
-    >
-      <h2 class="text-3xl font-semibold text-ts-primary mb-6 text-center border-b-2 border-ts-accent/30 pb-4">Conoce a Nuestro Equipo</h2>
-      <div class="flex flex-col items-center justify-center">
-        <div class="text-center bg-ts-background p-6 rounded-lg shadow-xl border-2 border-ts-accent/30 flex flex-col items-center">
-          <img
-            src="/assets/376b4099-53b6-4089-97f9-a103bbec2a75.JPG"
-            alt="Jimena Vargas - Masoterapeuta Especializada en Masajes Terapéuticos"
-            class="w-32 h-32 object-cover rounded-full mb-4 shadow-lg transition-transform duration-500 hover:scale-110 border-2 border-ts-accent"
-            loading="lazy"
-          />
-          <h3 class="text-xl font-semibold text-ts-text">Jimena Vargas</h3>
-          <p class="text-ts-accent">Masoterapeuta</p>
-          <p class="text-sm text-ts-text mt-2">Especializada En Masajes Terapéuticos.</p>
+    <!-- Sección de Estadísticas y Clientes Felices -->
+    <section class="py-12 sm:py-16 md:py-20 bg-gradient-to-r from-ts-primary to-ts-accent text-white">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12 sm:mb-16">
+          <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4" data-aos="fade-up" data-aos-delay="100">
+            Nuestros Logros
+          </h2>
+          <p class="text-base sm:text-lg md:text-xl opacity-90 max-w-xl md:max-w-2xl mx-auto px-4" data-aos="fade-up" data-aos-delay="150">
+            Cifras que reflejan nuestro compromiso con tu bienestar
+          </p>
         </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 max-w-5xl mx-auto">
+          <!-- Clientes Felices -->
+          <div class="text-center" data-aos="fade-up" data-aos-delay="200">
+            <div class="w-16 h-16 sm:w-18 sm:h-18 md:w-20 md:h-20 bg-white/20 rounded-full flex items-center justify-center mb-3 sm:mb-4 mx-auto">
+              <svg class="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+              </svg>
+            </div>
+            <div class="text-2xl sm:text-3xl md:text-4xl font-bold mb-1 sm:mb-2">
+              <span id="clients-counter">0</span>+
+            </div>
+            <p class="text-sm sm:text-base md:text-lg opacity-90">Clientes Felices</p>
+          </div>
+
+          <!-- Años de Experiencia -->
+          <div class="text-center" data-aos="fade-up" data-aos-delay="250">
+            <div class="w-16 h-16 sm:w-18 sm:h-18 md:w-20 md:h-20 bg-white/20 rounded-full flex items-center justify-center mb-3 sm:mb-4 mx-auto">
+              <svg class="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22C6.47,22 2,17.5 2,12A10,10 0 0,1 12,2M12.5,7V12.25L17,14.92L16.25,16.15L11,13V7H12.5Z"/>
+              </svg>
+            </div>
+            <div class="text-2xl sm:text-3xl md:text-4xl font-bold mb-1 sm:mb-2">
+              <span id="years-counter">0</span>+
+            </div>
+            <p class="text-sm sm:text-base md:text-lg opacity-90">Años de Experiencia</p>
+          </div>
+
+          <!-- Servicios -->
+          <div class="text-center" data-aos="fade-up" data-aos-delay="300">
+            <div class="w-16 h-16 sm:w-18 sm:h-18 md:w-20 md:h-20 bg-white/20 rounded-full flex items-center justify-center mb-3 sm:mb-4 mx-auto">
+              <svg class="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4M12,6A6,6 0 0,1 18,12A6,6 0 0,1 12,18A6,6 0 0,1 6,12A6,6 0 0,1 12,6M12,8A4,4 0 0,0 8,12A4,4 0 0,0 12,16A4,4 0 0,0 16,12A4,4 0 0,0 12,8Z"/>
+              </svg>
+            </div>
+            <div class="text-2xl sm:text-3xl md:text-4xl font-bold mb-1 sm:mb-2">
+              <span id="services-counter">0</span>+
+            </div>
+            <p class="text-sm sm:text-base md:text-lg opacity-90">Tipos de Masajes</p>
+          </div>
+
+          <!-- Satisfacción -->
+          <div class="text-center" data-aos="fade-up" data-aos-delay="350">
+            <div class="w-16 h-16 sm:w-18 sm:h-18 md:w-20 md:h-20 bg-white/20 rounded-full flex items-center justify-center mb-3 sm:mb-4 mx-auto">
+              <svg class="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M23,12L20.56,14.78L20.9,18.46L17.29,19.28L15.4,22.46L12,21L8.6,22.46L6.71,19.28L3.1,18.46L3.44,14.78L1,12L3.44,9.22L3.1,5.54L6.71,4.72L8.6,1.54L12,3L15.4,1.54L17.29,4.72L20.9,5.54L20.56,9.22L23,12M10,17L18,9L16.59,7.58L10,14.17L7.41,11.59L6,13L10,17Z"/>
+              </svg>
+            </div>
+            <div class="text-2xl sm:text-3xl md:text-4xl font-bold mb-1 sm:mb-2">
+              <span id="satisfaction-counter">0</span>%
+            </div>
+            <p class="text-sm sm:text-base md:text-lg opacity-90">Satisfacción</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* SECCIÓN: Nuestra Historia mejorada */}
+    <section class="py-12 sm:py-16 md:py-20 bg-white">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center max-w-7xl mx-auto">
+          <!-- Imagen -->
+          <div data-aos="fade-right" data-aos-delay="200" class="order-2 lg:order-1">
+            <div class="relative">
+              <img
+              src="/assets/ChatGPT Image 13 ago 2025, 07_18_05 p.m..png"
+              alt="Jimena Vargas - Fundadora de Terapia Shalom"
+              class="w-full h-48 xs:h-56 sm:h-64 md:h-72 lg:h-80 xl:h-96 object-cover object-center rounded-2xl shadow-2xl"
+              loading="lazy"
+              />
+
+                <div class="absolute -bottom-2 -right-2 xs:-bottom-3 xs:-right-3 sm:-bottom-4 sm:-right-4 md:-bottom-6 md:-right-6 w-12 h-12 xs:w-14 xs:h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 bg-gradient-to-br from-ts-primary to-ts-accent rounded-2xl flex items-center justify-center">
+                <span class="text-white font-bold text-xs xs:text-sm sm:text-base md:text-lg">2023</span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Contenido -->
+          <div data-aos="fade-left" data-aos-delay="300" class="order-1 lg:order-2">
+            <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-ts-primary mb-4 sm:mb-6">Nuestra Historia</h2>
+            <div class="w-12 sm:w-14 md:w-16 h-1 bg-ts-accent mb-4 sm:mb-6"></div>
+            <p class="text-base sm:text-lg text-ts-text leading-relaxed mb-4 sm:mb-6">
+              Terapia Shalom nació de la visión de un espacio seguro y de apoyo donde las personas pudieran encontrar la sanación y el crecimiento. Fundada por la especialista certificada <strong class="text-ts-primary">Jimena Vargas</strong>, con años de experiencia en masoterapia clínica.
+            </p>
+            <p class="text-base sm:text-lg text-ts-text leading-relaxed mb-6 sm:mb-8">
+              Nuestro objetivo fue crear una comunidad de apoyo que aborde las necesidades emocionales y físicas con empatía y profesionalismo, manteniendo siempre nuestro compromiso con la excelencia y el bienestar integral.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* SECCIÓN: Misión y Visión mejoradas */}
+    <section class="py-12 sm:py-16 md:py-20 bg-ts-background-light">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12 sm:mb-16">
+          <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-ts-primary mb-3 sm:mb-4" data-aos="fade-up" data-aos-delay="100">
+            Nuestra Misión & Visión
+          </h2>
+          <div class="w-16 sm:w-20 md:w-24 h-1 bg-gradient-to-r from-ts-primary to-ts-accent mx-auto rounded-full" data-aos="fade-up" data-aos-delay="150"></div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8 sm:gap-10 md:gap-12 max-w-6xl mx-auto">
+          <!-- Misión -->
+          <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-xl border-l-4 border-ts-primary" data-aos="fade-up" data-aos-delay="200">
+            <div class="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-gradient-to-br from-ts-primary to-ts-accent rounded-full flex items-center justify-center mb-4 sm:mb-6 mx-auto">
+              <svg class="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+              </svg>
+            </div>
+            <h3 class="text-xl sm:text-2xl font-semibold text-ts-primary mb-3 sm:mb-4 text-center">Nuestra Misión</h3>
+            <p class="text-sm sm:text-base text-ts-text leading-relaxed text-center">
+              Acompañar a nuestros pacientes en su camino hacia el equilibrio emocional y el bienestar físico, proporcionando herramientas y estrategias personalizadas para una vida plena y consciente.
+            </p>
+          </div>
+
+          <!-- Visión -->
+          <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-xl border-l-4 border-ts-accent" data-aos="fade-up" data-aos-delay="300">
+            <div class="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-gradient-to-br from-ts-accent to-ts-primary rounded-full flex items-center justify-center mb-4 sm:mb-6 mx-auto">
+              <svg class="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/>
+              </svg>
+            </div>
+            <h3 class="text-xl sm:text-2xl font-semibold text-ts-primary mb-3 sm:mb-4 text-center">Nuestra Visión</h3>
+            <p class="text-sm sm:text-base text-ts-text leading-relaxed text-center">
+              Ser el centro de bienestar de referencia, reconocido por la excelencia en nuestros servicios y el impacto positivo en la calidad de vida de nuestros clientes.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* SECCIÓN: Nuestros Valores mejorados */}
+    <section class="py-12 sm:py-16 md:py-20 bg-white">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12 sm:mb-16">
+          <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-ts-primary mb-3 sm:mb-4" data-aos="fade-up" data-aos-delay="100">
+            Nuestros Valores
+          </h2>
+          <p class="text-base sm:text-lg md:text-xl text-ts-text max-w-xl md:max-w-2xl mx-auto px-4" data-aos="fade-up" data-aos-delay="150">
+            Los principios que guían cada uno de nuestros servicios
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 max-w-7xl mx-auto">
+          <!-- Empatía -->
+          <div class="text-center p-4 sm:p-6 bg-ts-background-light rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2" data-aos="fade-up" data-aos-delay="200">
+            <div class="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-gradient-to-br from-ts-primary to-ts-accent rounded-full flex items-center justify-center mb-3 sm:mb-4 mx-auto">
+              <svg class="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+              </svg>
+            </div>
+            <h3 class="text-lg sm:text-xl font-semibold text-ts-primary mb-2 sm:mb-3">Empatía</h3>
+            <p class="text-xs sm:text-sm text-ts-text">Escuchamos y comprendemos las experiencias de nuestros pacientes sin juicio.</p>
+          </div>
+
+          <!-- Integridad -->
+          <div class="text-center p-4 sm:p-6 bg-ts-background-light rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2" data-aos="fade-up" data-aos-delay="250">
+            <div class="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-gradient-to-br from-ts-primary to-ts-accent rounded-full flex items-center justify-center mb-3 sm:mb-4 mx-auto">
+              <svg class="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1M12,7C13.4,7 14.8,8.6 14.8,10V11.5C14.8,12.3 14.1,13 13.3,13H10.7C9.9,13 9.2,12.3 9.2,11.5V10C9.2,8.6 10.6,7 12,7M12,8.2C11.2,8.2 10.5,8.7 10.5,9.5V10H13.5V9.5C13.5,8.7 12.8,8.2 12,8.2Z"/>
+              </svg>
+            </div>
+            <h3 class="text-lg sm:text-xl font-semibold text-ts-primary mb-2 sm:mb-3">Integridad</h3>
+            <p class="text-xs sm:text-sm text-ts-text">Actuamos con honestidad, ética y transparencia en todas nuestras interacciones.</p>
+          </div>
+
+          <!-- Profesionalismo -->
+          <div class="text-center p-4 sm:p-6 bg-ts-background-light rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2" data-aos="fade-up" data-aos-delay="300">
+            <div class="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-gradient-to-br from-ts-primary to-ts-accent rounded-full flex items-center justify-center mb-3 sm:mb-4 mx-auto">
+              <svg class="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12,3L1,9L12,15L21,10.09V17H23V9M5,13.18V17.18L12,21L19,17.18V13.18L12,17L5,13.18Z"/>
+              </svg>
+            </div>
+            <h3 class="text-lg sm:text-xl font-semibold text-ts-primary mb-2 sm:mb-3">Profesionalismo</h3>
+            <p class="text-xs sm:text-sm text-ts-text">Ofrecemos servicios de la más alta calidad, basados en la evidencia y formación continua.</p>
+          </div>
+
+          <!-- Confidencialidad -->
+          <div class="text-center p-4 sm:p-6 bg-ts-background-light rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2" data-aos="fade-up" data-aos-delay="350">
+            <div class="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-gradient-to-br from-ts-primary to-ts-accent rounded-full flex items-center justify-center mb-3 sm:mb-4 mx-auto">
+              <svg class="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12,17A2,2 0 0,0 14,15C14,13.89 13.1,13 12,13A2,2 0 0,0 10,15A2,2 0 0,0 12,17M18,8A2,2 0 0,1 20,10V20A2,2 0 0,1 18,22H6A2,2 0 0,1 4,20V10C4,8.89 4.9,8 6,8H7V6A5,5 0 0,1 12,1A5,5 0 0,1 17,6V8H18M12,3A3,3 0 0,0 9,6V8H15V6A3,3 0 0,0 12,3Z"/>
+              </svg>
+            </div>
+            <h3 class="text-lg sm:text-xl font-semibold text-ts-primary mb-2 sm:mb-3">Confidencialidad</h3>
+            <p class="text-xs sm:text-sm text-ts-text">Garantizamos la privacidad y seguridad de toda la información de nuestros pacientes.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* SECCIÓN: Conoce a Nuestro Equipo mejorado */}
+    <section class="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-ts-background-light to-white">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12 sm:mb-16">
+          <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-ts-primary mb-3 sm:mb-4" data-aos="fade-up" data-aos-delay="100">
+            Conoce a Nuestro Equipo
+          </h2>
+          <p class="text-base sm:text-lg md:text-xl text-ts-text max-w-xl md:max-w-2xl mx-auto px-4" data-aos="fade-up" data-aos-delay="150">
+            Profesionales dedicados a tu bienestar integral
+          </p>
+        </div>
+
+        <div class="max-w-4xl mx-auto">
+          <div class="bg-white rounded-3xl shadow-2xl overflow-hidden" data-aos="fade-up" data-aos-delay="200">
+            <div class="flex flex-col lg:flex-row">
+              <div class="lg:w-1/2">
+                <img
+                  src="/assets/376b4099-53b6-4089-97f9-a103bbec2a75.JPG"
+                  alt="Jimena Vargas - Masoterapeuta Especializada"
+                  class="w-full h-48 xs:h-52 sm:h-56 md:h-60 lg:h-64 xl:h-72 2xl:h-80 object-cover object-top"
+                  loading="lazy"
+                />
+              </div>
+              <div class="lg:w-1/2 p-6 sm:p-8 flex flex-col justify-center">
+                <div class="text-center lg:text-left">
+                  <h3 class="text-2xl sm:text-3xl font-bold text-ts-primary mb-2">Jimena Vargas</h3>
+                  <p class="text-lg sm:text-xl text-ts-accent mb-3 sm:mb-4">Fundadora & Masoterapeuta</p>
+                  <div class="w-12 sm:w-14 md:w-16 h-1 bg-ts-accent mb-4 sm:mb-6 mx-auto lg:mx-0"></div>
+                  <p class="text-sm sm:text-base text-ts-text leading-relaxed mb-4 sm:mb-6">
+                    Especializada en masajes terapéuticos con años de experiencia en el bienestar integral. Certificada en técnicas de relajación profunda y terapias holísticas.
+                  </p>
+                  
+                  <!-- Especialidades -->
+                  <div class="space-y-2">
+                    <div class="flex items-center justify-center lg:justify-start">
+                      <span class="w-2 h-2 bg-ts-accent rounded-full mr-3 flex-shrink-0"></span>
+                      <span class="text-ts-text text-xs sm:text-sm">Masoterapia Clínica</span>
+                    </div>
+                    <div class="flex items-center justify-center lg:justify-start">
+                      <span class="w-2 h-2 bg-ts-accent rounded-full mr-3 flex-shrink-0"></span>
+                      <span class="text-ts-text text-xs sm:text-sm">Relajación Profunda</span>
+                    </div>
+                    <div class="flex items-center justify-center lg:justify-start">
+                      <span class="w-2 h-2 bg-ts-accent rounded-full mr-3 flex-shrink-0"></span>
+                      <span class="text-ts-text text-xs sm:text-sm">Bienestar Integral</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-12 sm:py-16 md:py-20 bg-gradient-to-r from-ts-primary to-ts-accent text-white text-center">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6" data-aos="fade-up" data-aos-delay="100">
+          ¿Listo para comenzar tu camino hacia el bienestar?
+        </h2>
+        <p class="text-base sm:text-lg md:text-xl mb-6 sm:mb-8 opacity-90 max-w-xl md:max-w-2xl mx-auto px-4" data-aos="fade-up" data-aos-delay="150">
+          Reserva tu cita hoy y descubre la experiencia de relajación que mereces
+        </p>
+        <a 
+          href="/contacto" 
+          class="inline-block bg-white text-ts-primary px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg font-semibold hover:bg-ts-background-light transition-colors duration-300 shadow-lg hover:shadow-xl"
+          data-aos="fade-up" data-aos-delay="200"
+        >
+          Reservar Cita Ahora
+        </a>
       </div>
     </section>
   </main>
 
-   <script>
-    import AOS from 'aos';
-    AOS.init({
-    duration: 800,
-    easing: 'ease-in-out',
-    once: false,   // Permite repetir la animación
+  <script is:inline>
+    // Inicializar AOS cuando se carga la página
+    document.addEventListener('DOMContentLoaded', function() {
+      // Importar e inicializar AOS
+      if (typeof AOS !== 'undefined') {
+        AOS.init({
+          duration: 800,
+          easing: 'ease-in-out',
+          once: false,
+        });
+        AOS.refresh();
+      }
+
+      // Contador animado para las estadísticas
+      function animateCounter(elementId, targetValue, duration = 2000) {
+        const element = document.getElementById(elementId);
+        if (!element) return;
+        
+        const startValue = 0;
+        const increment = targetValue / (duration / 16); // 60 FPS
+        let currentValue = startValue;
+        
+        const updateCounter = () => {
+          currentValue += increment;
+          if (currentValue >= targetValue) {
+            element.textContent = targetValue;
+            return;
+          }
+          element.textContent = Math.floor(currentValue);
+          requestAnimationFrame(updateCounter);
+        };
+        
+        updateCounter();
+      }
+
+      // Observer para activar los contadores cuando sean visibles
+      const observerOptions = {
+        threshold: 0.3,
+        rootMargin: '0px 0px -50px 0px'
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            // Animar los contadores con delays progresivos
+            setTimeout(() => animateCounter('clients-counter', 30, 2000), 400);
+            setTimeout(() => animateCounter('years-counter', 2, 1500), 600);
+            setTimeout(() => animateCounter('services-counter', 6, 1800), 800);
+            setTimeout(() => animateCounter('satisfaction-counter', 100, 2200), 1000);
+            
+            // Desconectar el observer después de la primera animación
+            observer.disconnect();
+          }
+        });
+      }, observerOptions);
+
+      // Observar la sección de estadísticas
+      const statsSection = document.querySelector('.bg-gradient-to-r.from-ts-primary.to-ts-accent');
+      if (statsSection) {
+        observer.observe(statsSection);
+      }
     });
-  AOS.refresh();
+
+    // Reinicializar en navegación SPA
+    document.addEventListener('astro:after-swap', () => {
+      if (typeof AOS !== 'undefined') {
+        AOS.refresh();
+      }
+      
+      // Reinicializar el observer para los contadores
+      const observerOptions = {
+        threshold: 0.3,
+        rootMargin: '0px 0px -50px 0px'
+      };
+
+      function animateCounter(elementId, targetValue, duration = 2000) {
+        const element = document.getElementById(elementId);
+        if (!element) return;
+        
+        const startValue = 0;
+        const increment = targetValue / (duration / 16);
+        let currentValue = startValue;
+        
+        const updateCounter = () => {
+          currentValue += increment;
+          if (currentValue >= targetValue) {
+            element.textContent = targetValue;
+            return;
+          }
+          element.textContent = Math.floor(currentValue);
+          requestAnimationFrame(updateCounter);
+        };
+        
+        updateCounter();
+      }
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            setTimeout(() => animateCounter('clients-counter', 30, 2000), 200);
+            setTimeout(() => animateCounter('years-counter', 2, 1500), 400);
+            setTimeout(() => animateCounter('services-counter', 6, 1800), 600);
+            setTimeout(() => animateCounter('satisfaction-counter', 100, 2200), 800);
+            observer.disconnect();
+          }
+        });
+      }, observerOptions);
+
+      const statsSection = document.querySelector('.bg-gradient-to-r.from-ts-primary.to-ts-accent');
+      if (statsSection) {
+        observer.observe(statsSection);
+      }
+    });
+  </script>
+
+  <!-- Script para cargar AOS -->
+  <script>
+    import AOS from 'aos';
+    
+    // Inicializar AOS
+    AOS.init({
+      duration: 800,
+      easing: 'ease-in-out',
+      once: false,
+    });
+    AOS.refresh();
   </script>
 </Layout>

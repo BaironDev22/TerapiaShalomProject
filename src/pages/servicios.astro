@@ -17,42 +17,71 @@ import 'aos/dist/aos.css';
 
     <!-- Cards con animaciones y delays progresivos -->
     <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-10">
-      <div class="bg-ts-background p-6 rounded-lg shadow-xl border-2 border-ts-accent/30 flex flex-col items-center transition-transform duration-300 hover:scale-105 hover:shadow-2xl" data-aos="fade-up" data-aos-delay="100">
-        <img src="/assets/relajacion.jpg" alt="Masaje de Relajación" class="w-32 h-32 object-cover rounded-full mb-4 shadow-lg transition-transform duration-500 hover:scale-110" loading="lazy" />
-        <h2 class="text-2xl font-semibold mb-2 text-ts-primary">Masaje De Relajación</h2>
-        <p class="text-ts-text text-center">Diseñado para mitigar el estrés y la tensión acumulada, este masaje promueve una relajación profunda a nivel muscular y mental, induciendo un estado de calma y bienestar general.</p>
-      </div>
-      <div class="bg-ts-background p-6 rounded-lg shadow-xl border-2 border-ts-accent/30 flex flex-col items-center transition-transform duration-300 hover:scale-105 hover:shadow-2xl" data-aos="fade-up" data-aos-delay="150">
-        <img src="/assets/Descontracturante.jpg" alt="Masaje Descontracturante" class="w-32 h-32 object-cover rounded-full mb-4 shadow-lg transition-transform duration-500 hover:scale-110" loading="lazy" />
-        <h2 class="text-2xl font-semibold mb-2 text-ts-primary">Masaje Descontracturante</h2>
-        <p class="text-ts-text text-center">Este masaje terapéutico se enfoca en la liberación de nudos musculares y contracturas, buscando restaurar la movilidad y flexibilidad articular, y aliviar el dolor localizado de forma efectiva.</p>
-      </div>
-      <div class="bg-ts-background p-6 rounded-lg shadow-xl border-2 border-ts-accent/30 flex flex-col items-center transition-transform duration-300 hover:scale-105 hover:shadow-2xl" data-aos="fade-up" data-aos-delay="200">
-        <img src="/assets/Linfatico.jpg" alt="Drenaje Linfático" class="w-32 h-32 object-cover rounded-full mb-4 shadow-lg transition-transform duration-500 hover:scale-110" loading="lazy" />
-        <h2 class="text-2xl font-semibold mb-2 text-ts-primary">Drenaje Linfático</h2>
-        <p class="text-ts-text text-center">Técnica manual suave y rítmica que estimula el sistema linfático, favoreciendo la eliminación de toxinas y el exceso de líquidos. Es ideal para reducir la hinchazón y mejorar la circulación general.</p>
-      </div>
-      <div class="bg-ts-background p-6 rounded-lg shadow-xl border-2 border-ts-accent/30 flex flex-col items-center transition-transform duration-300 hover:scale-105 hover:shadow-2xl" data-aos="fade-up" data-aos-delay="250">
-        <img src="/assets/pexels-anntarazevich-6560304.jpg" alt="Masaje Express en Silla" class="w-32 h-32 object-cover rounded-full mb-4 shadow-lg transition-transform duration-500 hover:scale-110" loading="lazy" />
-        <h2 class="text-2xl font-semibold mb-2 text-ts-primary">Masaje Express En Silla (Tu-Na)</h2>
-        <p class="text-ts-text text-center">Especialmente diseñado para profesionales con alta demanda laboral, este masaje de 12 a 15 minutos en silla se enfoca en espalda, cráneo y extremidades superiores. Ofrece una doble acción: inicia con relajación profunda para luego revitalizar cuerpo y ánimo, lo que se traduce en mejora del rendimiento y bienestar laboral.</p>
-      </div>
-      <div class="bg-ts-background p-6 rounded-lg shadow-xl border-2 border-ts-accent/30 flex flex-col items-center transition-transform duration-300 hover:scale-105 hover:shadow-2xl" data-aos="fade-up" data-aos-delay="300">
-        <img src="/assets/Piedrascalientes.jpg" alt="Terapia con Piedras Calientes" class="w-32 h-32 object-cover rounded-full mb-4 shadow-lg transition-transform duration-500 hover:scale-110" loading="lazy" />
-        <h2 class="text-2xl font-semibold mb-2 text-ts-primary">Terapia con Piedras Calientes</h2>
-        <p class="text-ts-text text-center">Una experiencia única que utiliza piedras volcánicas calientes para relajar profundamente los músculos, aliviar la tensión y promover una sensación de bienestar y equilibrio.</p>
-      </div>
-      <div class="bg-ts-background p-6 rounded-lg shadow-xl border-2 border-ts-accent/30 flex flex-col items-center transition-transform duration-300 hover:scale-105 hover:shadow-2xl" data-aos="fade-up" data-aos-delay="350">
-        <img src="/assets/Esteticos.jpg" alt="Tratamientos Estéticos Generales" class="w-32 h-32 object-cover rounded-full mb-4 shadow-lg transition-transform duration-500 hover:scale-110" loading="lazy" />
-        <h2 class="text-2xl font-semibold mb-2 text-ts-primary">Tratamientos Estéticos Generales</h2>
-        <p class="text-ts-text text-center">Ofrecemos una gama de tratamientos estéticos personalizados diseñados para revitalizar la piel y realzar la belleza natural. Empleamos productos de alta calidad y técnicas avanzadas para resultados óptimos.</p>
-      </div>
-    </section>
 
+  <!-- Masaje de Relajación -->
+  <div class="bg-ts-background p-6 rounded-lg shadow-xl border-2 border-ts-accent/30 flex flex-col items-center transition-transform duration-300 hover:scale-105 hover:shadow-2xl" data-aos="fade-up" data-aos-delay="100">
+    <img src="/assets/relajacion.jpg" alt="Masaje de Relajación" class="w-32 h-32 object-cover rounded-full mb-4 shadow-lg transition-transform duration-500 hover:scale-110" loading="lazy" />
+    <h2 class="text-2xl font-semibold mb-2 text-ts-primary">Masaje De Relajación</h2>
+    <p class="text-ts-text text-center">Diseñado para mitigar el estrés y la tensión acumulada, este masaje promueve una relajación profunda a nivel muscular y mental, induciendo un estado de calma y bienestar general.</p>
+    <button class="mt-4 px-4 py-2 bg-ts-primary text-white rounded-full hover:bg-ts-accent transition-700 transition" onclick="addToCart('Masaje De Relajación', 20000)">
+      Agregar al carrito
+    </button> 
+  </div>
+
+  <!-- Masaje Descontracturante -->
+  <div class="bg-ts-background p-6 rounded-lg shadow-xl border-2 border-ts-accent/30 flex flex-col items-center transition-transform duration-300 hover:scale-105 hover:shadow-2xl" data-aos="fade-up" data-aos-delay="150">
+    <img src="/assets/Descontracturante.jpg" alt="Masaje Descontracturante" class="w-32 h-32 object-cover rounded-full mb-4 shadow-lg transition-transform duration-500 hover:scale-110" loading="lazy" />
+    <h2 class="text-2xl font-semibold mb-2 text-ts-primary">Masaje Descontracturante</h2>
+    <p class="text-ts-text text-center">Este masaje terapéutico se enfoca en la liberación de nudos musculares y contracturas, buscando restaurar la movilidad y flexibilidad articular, y aliviar el dolor localizado de forma efectiva.</p>
+    <button class="mt-4 px-4 py-2 bg-ts-primary text-white rounded-full hover:bg-ts-accent transition-700 transition" onclick="addToCart('Masaje Descontracturante', 25000)">
+      Agregar al carrito
+    </button> 
+  </div>
+
+  <!-- Drenaje Linfático -->
+  <div class="bg-ts-background p-6 rounded-lg shadow-xl border-2 border-ts-accent/30 flex flex-col items-center transition-transform duration-300 hover:scale-105 hover:shadow-2xl" data-aos="fade-up" data-aos-delay="200">
+    <img src="/assets/Linfatico.jpg" alt="Drenaje Linfático" class="w-32 h-32 object-cover rounded-full mb-4 shadow-lg transition-transform duration-500 hover:scale-110" loading="lazy" />
+    <h2 class="text-2xl font-semibold mb-2 text-ts-primary">Drenaje Linfático</h2>
+    <p class="text-ts-text text-center">Técnica manual suave y rítmica que estimula el sistema linfático, favoreciendo la eliminación de toxinas y el exceso de líquidos. Es ideal para reducir la hinchazón y mejorar la circulación general.</p>
+    <button class="mt-4 px-4 py-2 bg-ts-primary text-white rounded-full hover:bg-ts-accent transition-700 transition" onclick="addToCart('Drenaje Linfático', 27000)">
+      Agregar al carrito
+    </button> 
+  </div>
+
+  <!-- Masaje Express En Silla -->
+  <div class="bg-ts-background p-6 rounded-lg shadow-xl border-2 border-ts-accent/30 flex flex-col items-center transition-transform duration-300 hover:scale-105 hover:shadow-2xl" data-aos="fade-up" data-aos-delay="250">
+    <img src="/assets/pexels-anntarazevich-6560304.jpg" alt="Masaje Express en Silla" class="w-32 h-32 object-cover rounded-full mb-4 shadow-lg transition-transform duration-500 hover:scale-110" loading="lazy" />
+    <h2 class="text-2xl font-semibold mb-2 text-ts-primary">Masaje Express En Silla (Tu-Na)</h2>
+    <p class="text-ts-text text-center">Especialmente diseñado para profesionales con alta demanda laboral. Masaje de 12 a 15 minutos en silla que enfoca en espalda, cráneo y brazos, promoviendo relajación y revitalización inmediata.</p>
+    <button class="mt-4 px-4 py-2 bg-ts-primary text-white rounded-full hover:bg-ts-accent transition-700 transition" onclick="addToCart('Masaje Express En Silla', 15000)">
+      Agregar al carrito
+    </button> 
+  </div>
+
+  <!-- Terapia con Piedras Calientes -->
+  <div class="bg-ts-background p-6 rounded-lg shadow-xl border-2 border-ts-accent/30 flex flex-col items-center transition-transform duration-300 hover:scale-105 hover:shadow-2xl" data-aos="fade-up" data-aos-delay="300">
+    <img src="/assets/Piedrascalientes.jpg" alt="Terapia con Piedras Calientes" class="w-32 h-32 object-cover rounded-full mb-4 shadow-lg transition-transform duration-500 hover:scale-110" loading="lazy" />
+    <h2 class="text-2xl font-semibold mb-2 text-ts-primary">Terapia con Piedras Calientes</h2>
+    <p class="text-ts-text text-center">Una experiencia única que utiliza piedras volcánicas calientes para relajar profundamente los músculos, aliviar la tensión y promover una sensación de bienestar y equilibrio.</p>
+    <button class="mt-4 px-4 py-2 bg-ts-primary text-white rounded-full hover:bg-ts-accent transition-700 transition" onclick="addToCart('Terapia con Piedras Calientes', 28000)">
+      Agregar al carrito
+    </button> 
+  </div>
+
+  <!-- Tratamientos Estéticos Generales -->
+  <div class="bg-ts-background p-6 rounded-lg shadow-xl border-2 border-ts-accent/30 flex flex-col items-center transition-transform duration-300 hover:scale-105 hover:shadow-2xl" data-aos="fade-up" data-aos-delay="350">
+    <img src="/assets/Esteticos.jpg" alt="Tratamientos Estéticos Generales" class="w-32 h-32 object-cover rounded-full mb-4 shadow-lg transition-transform duration-500 hover:scale-110" loading="lazy" />
+    <h2 class="text-2xl font-semibold mb-2 text-ts-primary">Tratamientos Estéticos Generales</h2>
+    <p class="text-ts-text text-center">Ofrecemos una gama de tratamientos estéticos personalizados diseñados para revitalizar la piel y realzar la belleza natural. Empleamos productos de alta calidad y técnicas avanzadas para resultados óptimos.</p>
+    <button class="mt-4 px-4 py-2 bg-ts-primary text-white rounded-full hover:bg-ts-accent transition-700 transition" onclick="addToCart('Tratamientos Estéticos Generales', 30000)">
+      Agregar al carrito
+    </button> 
+  </div>
+</section>
     <!-- CTA con animación -->
     <div class="mt-12 flex justify-center" data-aos="fade-right" data-aos-delay="300">
-      <a href="/contacto" class="bg-ts-primary text-white px-8 py-3 rounded-full shadow-lg hover:bg-ts-accent hover:scale-105 transition font-semibold text-lg focus:outline-none focus:ring-2 focus:ring-ts-accent">
-        Agenda tu cita
+      <a href="/contacto" class="bg-ts-primary text-white px-8 py-3 rounded-full shadow-lg hover:bg-ts-accent hover:scale-105 transition font-semibold text-lg focus:outline-none focus:ring-2 focus:ring-ts-accent mr-4">
+        Cita Personalizada
       </a>
     </div>
   </main>
@@ -64,7 +93,7 @@ import 'aos/dist/aos.css';
     easing: 'ease-in-out',
     once: false,   // Permite repetir la animación
     });
-AOS.refresh();
+    AOS.refresh();
   </script>
 </Layout>
 

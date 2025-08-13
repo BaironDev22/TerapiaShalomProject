@@ -1,0 +1,42 @@
+let cart = [];
+
+function addToCart(service, price) {
+  const existing = cart.find(item => item.name === service);
+  if (existing) {
+    existing.qty += 1;
+  } else {
+    cart.push({ name: service, price, qty: 1 });
+  }
+  updateCart();
+}
+
+function updateCart() {
+  const itemsList = document.getElementById("cart-items");
+  const totalSpan = document.getElementById("cart-total");
+  const whatsappBtn = document.getElementById("whatsapp-button");
+
+  if (!itemsList || !totalSpan || !whatsappBtn) return;
+
+  itemsList.innerHTML = "";
+  let total = 0;
+
+  cart.forEach(item => {
+    const li = document.createElement("li");
+    li.textContent = `${item.qty} x ${item.name} - $${item.price * item.qty}`;
+    itemsList.appendChild(li);
+    total += item.price * item.qty;
+  });
+
+  totalSpan.textContent = total.toLocaleString();
+
+  const phone = "56935875470";
+  const msg = cart.map(item => `${item.qty} x ${item.name} - $${item.price * item.qty}`).join("\n");
+  const finalMsg = encodeURIComponent(`Hola! Me gustaría reservar los siguientes servicios:\n${msg}\n\nTotal: $${total.toLocaleString()}`);
+
+  whatsappBtn.href = `https://wa.me/${phone}?text=${finalMsg}`;
+}
+
+window.addEventListener("DOMContentLoaded", () => {
+  window.addToCart = addToCart;
+});
+

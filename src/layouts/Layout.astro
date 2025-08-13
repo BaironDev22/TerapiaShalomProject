@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import Navbar from '../components/Navbar.astro';
 import WhatsappIcon from '../components/icons/WTSP.astro';
+import CartIcon from '../components/icons/CartIcon.astro';
 import Footer from '../components/Footer.astro';
 
 const { title = 'Terapia Shalom - Masajes y Bienestar' } = Astro.props as { title?: string };
@@ -11,32 +12,250 @@ const { title = 'Terapia Shalom - Masajes y Bienestar' } = Astro.props as { titl
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{title}</title>  
+    <title>{title}</title>
+    <!-- Script del sistema de carrito cargado en head -->
+    <script src="/js/cart-system.js" defer></script>
   </head>
   <body class="bg-ts-background text-ts-text font-sans relative min-h-screen flex flex-col">
     <Navbar />
     <main class="flex-grow">
       <slot />
     </main>
-    <!-- Contenedor de botón + texto -->
-  <div class="fixed bottom-6 right-6 z-50 flex items-center gap-2 sm:gap-3 group">
-  <!-- Texto flotante -->
-  <div
-    class="bg-ts-accent text-white text-xs sm:text-sm px-2 sm:px-3 py-1 rounded-full shadow-xl transition-opacity duration-300 group-hover:opacity-100 opacity-90"
-  >
-    ¡Háblanos aquí!
-  </div>
-  <!-- Botón de WhatsApp con hover estilo 'Descubre nuestros servicios' -->
-  <a
-    href="https://wa.me/56935875470"
-    target="_blank"
-    rel="noopener noreferrer"
-    class="w-12 h-12 sm:w-14 sm:h-14 bg-ts-accent text-white flex items-center justify-center rounded-full shadow-xl transition duration-300 ease-in-out hover:bg-ts-primary hover:scale-105 focus:ring-2 focus:ring-ts-primary focus:outline-none"
-    aria-label="Chatear por WhatsApp"
-  >
-    <WhatsappIcon class="w-5 h-5 sm:w-6 sm:h-6" />
-  </a>
-  </div>
+    <!-- Contenedor de botones flotantes -->
+    <div class="fixed bottom-4 left-4 sm:bottom-6 sm:left-6 z-40 flex flex-col gap-3">
+      <!-- Botón de carrito global -->
+      <button id="global-cart-btn" class="w-12 h-12 sm:w-14 sm:h-14 bg-ts-accent text-white flex items-center justify-center rounded-full whatsapp-shadow transition-all duration-300 ease-in-out hover:bg-ts-primary hover:scale-105 sm:hover:scale-110 focus:ring-4 focus:ring-ts-primary/50 focus:outline-none relative group">
+        <CartIcon class="w-5 h-5 sm:w-6 sm:h-6" />
+        <span id="global-cart-badge" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-6 h-6 items-center justify-center hidden">0</span>
+      </button>
+    </div>
+
+    <!-- Contenedor de botón WhatsApp flotante -->
+    <div class="whatsapp-float bottom-4 right-4 sm:bottom-6 sm:right-6">
+      <div class="relative flex items-center justify-end gap-2 sm:gap-3">
+        <!-- Texto flotante siempre visible -->
+        <div
+          id="whatsapp-text"
+          class="bg-white text-ts-primary text-xs sm:text-sm font-medium px-2 sm:px-3 py-1 sm:py-2 rounded-lg whatsapp-shadow border border-ts-accent/20 transition-all duration-300 whitespace-nowrap"
+        >
+          <div class="relative">
+            ¡Háblanos aquí!
+            <!-- Flecha apuntando al botón -->
+            <div class="absolute top-1/2 -right-1 sm:-right-2 w-0 h-0 border-l-[6px] sm:border-l-[8px] border-l-white border-t-[4px] sm:border-t-[6px] border-t-transparent border-b-[4px] sm:border-b-[6px] border-b-transparent transform -translate-y-1/2"></div>
+          </div>
+        </div>
+        
+        <!-- Botón de WhatsApp -->
+        <a
+          href="https://wa.me/56935875470"
+          target="_blank"
+          rel="noopener noreferrer"
+          id="whatsapp-button"
+          class="w-12 h-12 sm:w-14 sm:h-14 bg-ts-accent text-white flex items-center justify-center rounded-full whatsapp-shadow transition-all duration-300 ease-in-out hover:bg-ts-primary hover:scale-105 sm:hover:scale-110 focus:ring-4 focus:ring-ts-primary/50 focus:outline-none group"
+          aria-label="Chatear por WhatsApp"
+        >
+          <WhatsappIcon class="w-5 h-5 sm:w-6 sm:h-6 transition-transform duration-300 group-hover:scale-110" />
+        </a>
+      </div>
+    </div>
+
+    <!-- Modales del sistema de carrito (solo si no existen en la página) -->
+    <div id="global-cart-modals">
+      <!-- Modal del Carrito -->
+      <div id="cart-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
+        <div class="flex items-center justify-center min-h-screen p-4">
+          <div class="bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-hidden">
+            <!-- Header del Modal -->
+            <div class="bg-ts-primary text-white p-6 flex justify-between items-center">
+              <h2 class="text-2xl font-bold">Mi Carrito de Servicios</h2>
+              <button id="close-cart-btn" class="text-white hover:text-gray-200 text-2xl font-bold">&times;</button>
+            </div>
+            
+            <!-- Contenido del Modal -->
+            <div class="p-6 overflow-y-auto max-h-[70vh]">
+              <!-- Lista de servicios -->
+              <div id="cart-items-list" class="space-y-4 mb-6">
+                <div class="text-center text-gray-500 py-8">
+                  <div class="text-4xl mb-4 flex justify-center">
+                    <CartIcon class="w-12 h-12 text-gray-400" />
+                  </div>
+                  <p>Tu carrito está vacío</p>
+                  <p class="text-sm">Agrega servicios para comenzar</p>
+                </div>
+              </div>
+              
+              <!-- Total -->
+              <div id="cart-total-section" class="border-t pt-4 hidden">
+                <div class="flex justify-between items-center text-xl font-bold text-ts-primary">
+                  <span>Total:</span>
+                  <span>$<span id="cart-total">0</span></span>
+                </div>
+              </div>
+              
+              <!-- Botones de acción -->
+              <div id="cart-actions" class="mt-6 gap-3 hidden">
+                <button id="view-services-btn" class="flex-1 bg-gray-500 text-white py-3 px-6 rounded-lg hover:bg-gray-600 transition font-semibold text-center">
+                  Ver Más Servicios
+                </button>
+                <button id="reserve-btn" class="flex-1 bg-ts-accent text-white py-3 px-6 rounded-lg hover:bg-ts-primary transition font-semibold">
+                  Proceder a Reservar
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal de Reserva -->
+      <div id="reservation-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
+        <div class="flex items-center justify-center min-h-screen p-4">
+          <div class="bg-white rounded-2xl shadow-2xl max-w-lg w-full max-h-[90vh] overflow-hidden">
+            <!-- Header del Modal de Reserva -->
+            <div class="bg-ts-accent text-white p-6 flex justify-between items-center">
+              <h2 class="text-2xl font-bold">Datos de Reserva</h2>
+              <button id="close-reservation-btn" class="text-white hover:text-gray-200 text-2xl font-bold">&times;</button>
+            </div>
+            
+            <!-- Formulario de Reserva -->
+            <div class="p-6">
+              <form id="reservation-form" class="space-y-4">
+                <!-- Nombre -->
+                <div>
+                  <label for="customer-name" class="block text-sm font-medium text-ts-text mb-1">Nombre Completo *</label>
+                  <input type="text" id="customer-name" name="name" required 
+                         class="w-full p-3 border border-ts-accent/40 rounded-lg focus:ring-2 focus:ring-ts-primary focus:border-ts-primary">
+                  <span class="error-message text-red-500 text-sm hidden"></span>
+                </div>
+
+                <!-- Email -->
+                <div>
+                  <label for="customer-email" class="block text-sm font-medium text-ts-text mb-1">Email *</label>
+                  <input type="email" id="customer-email" name="email" required 
+                         class="w-full p-3 border border-ts-accent/40 rounded-lg focus:ring-2 focus:ring-ts-primary focus:border-ts-primary">
+                  <span class="error-message text-red-500 text-sm hidden"></span>
+                </div>
+
+                <!-- Teléfono -->
+                <div>
+                  <label for="customer-phone" class="block text-sm font-medium text-ts-text mb-1">Teléfono</label>
+                  <input type="tel" id="customer-phone" name="phone" 
+                         class="w-full p-3 border border-ts-accent/40 rounded-lg focus:ring-2 focus:ring-ts-primary focus:border-ts-primary">
+                </div>
+
+                <!-- Fecha -->
+                <div>
+                  <label for="reservation-date" class="block text-sm font-medium text-ts-text mb-1">Fecha de Reserva *</label>
+                  <input type="date" id="reservation-date" name="date" required 
+                         class="w-full p-3 border border-ts-accent/40 rounded-lg focus:ring-2 focus:ring-ts-primary focus:border-ts-primary">
+                  <span class="error-message text-red-500 text-sm hidden"></span>
+                </div>
+
+                <!-- Hora -->
+                <div>
+                  <label for="reservation-time" class="block text-sm font-medium text-ts-text mb-1">Hora de Reserva *</label>
+                  <select id="reservation-time" name="time" required 
+                          class="w-full p-3 border border-ts-accent/40 rounded-lg focus:ring-2 focus:ring-ts-primary focus:border-ts-primary">
+                    <option value="">Selecciona una hora</option>
+                  </select>
+                  <span class="error-message text-red-500 text-sm hidden"></span>
+                </div>
+
+                <!-- Comentarios -->
+                <div>
+                  <label for="comments" class="block text-sm font-medium text-ts-text mb-1">Comentarios adicionales</label>
+                  <textarea id="comments" name="comments" rows="3" 
+                            class="w-full p-3 border border-ts-accent/40 rounded-lg focus:ring-2 focus:ring-ts-primary focus:border-ts-primary"
+                            placeholder="Alguna preferencia o comentario..."></textarea>
+                </div>
+
+                <!-- Botones -->
+                <div class="flex gap-3 pt-4">
+                  <button type="button" id="back-to-cart-btn" 
+                          class="flex-1 bg-gray-500 text-white py-3 px-6 rounded-lg hover:bg-gray-600 transition font-semibold">
+                    Volver al Carrito
+                  </button>
+                  <button type="submit" 
+                          class="flex-1 bg-ts-primary text-white py-3 px-6 rounded-lg hover:bg-ts-accent transition font-semibold">
+                    Enviar por WhatsApp
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Script simplificado para el botón WhatsApp -->
+    <script is:inline>
+      document.addEventListener('DOMContentLoaded', function() {
+        const whatsappButton = document.getElementById('whatsapp-button');
+        const whatsappText = document.getElementById('whatsapp-text');
+
+        // Efectos hover mejorados
+        if (whatsappButton && whatsappText) {
+          whatsappButton.addEventListener('mouseenter', function() {
+            whatsappText.classList.add('scale-105', 'shadow-2xl');
+          });
+
+          whatsappButton.addEventListener('mouseleave', function() {
+            whatsappText.classList.remove('scale-105', 'shadow-2xl');
+          });
+
+          // Efecto de pulsación en móviles
+          whatsappButton.addEventListener('touchstart', function() {
+            whatsappText.classList.add('scale-105');
+          });
+
+          whatsappButton.addEventListener('touchend', function() {
+            setTimeout(() => {
+              whatsappText.classList.remove('scale-105');
+            }, 150);
+          });
+        }
+
+        // Test simple para verificar que addToCart funciona
+        setTimeout(() => {
+          if (typeof window.addToCart === 'function') {
+            console.log('addToCart function is available');
+          } else {
+            console.error('addToCart function is NOT available - Loading cart system...');
+            // Si no está disponible, cargar manualmente
+            if (!window.terapiaShalomCart) {
+              try {
+                const script = document.createElement('script');
+                script.src = '/js/cart-system.js';
+                script.onload = () => {
+                  console.log('Cart system loaded manually');
+                };
+                document.head.appendChild(script);
+              } catch (error) {
+                console.error('Error loading cart system:', error);
+              }
+            }
+          }
+        }, 1000);
+
+        // Manejar botón "Ver Más Servicios"
+        const viewServicesBtn = document.getElementById('view-services-btn');
+        if (viewServicesBtn) {
+          viewServicesBtn.addEventListener('click', function() {
+            // Cerrar el modal
+            const cartModal = document.getElementById('cart-modal');
+            if (cartModal) {
+              cartModal.classList.add('hidden');
+              document.body.style.overflow = '';
+            }
+            
+            // Navegar a servicios sin recargar si estamos en Astro SPA
+            if (window.location.pathname !== '/servicios') {
+              window.location.href = '/servicios';
+            }
+          });
+        }
+      });
+    </script>
+    
     <Footer />
   </body>
 </html>

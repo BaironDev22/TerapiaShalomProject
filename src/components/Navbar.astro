@@ -11,7 +11,7 @@ const navItems = [
 const currentPath = Astro.url.pathname;
 ---
 
-<header class="fixed top-0 left-0 w-full z-40">
+<header class="fixed top-0 left-0 w-full z-50">
   <nav
     class="flex px-4 py-3 text-sm font-medium
       text-ts-accent
@@ -42,10 +42,17 @@ const currentPath = Astro.url.pathname;
         ))
       }
     </ul>
-    <button id="mobile-menu-button" class="md:hidden flex flex-col justify-center items-center z-50 p-2 group" aria-label="Abrir menú">
-    <span class="block w-6 h-0.5 bg-ts-accent mb-1 transition-transform duration-300 ease-in-out group-[.open]:rotate-45 group-[.open]:translate-y-1"></span>
-    <span class="block w-6 h-0.5 bg-ts-accent mb-1 transition-opacity duration-300 ease-in-out group-[.open]:opacity-0"></span>
-    <span class="block w-6 h-0.5 bg-ts-accent transition-transform duration-300 ease-in-out group-[.open]:-rotate-45 group-[.open]:-translate-y-1"></span>
+    <button 
+      id="mobile-menu-button" 
+      class="md:hidden flex flex-col justify-center items-center z-50 p-2 group" 
+      aria-label="Abrir menú"
+    >
+      <span class="block w-6 h-0.5 bg-ts-accent mb-1 transition-transform duration-300 ease-in-out group-[.open]:rotate-45 group-[.open]:translate-y-1"></span>
+      <span class="block w-6 h-0.5 bg-ts-accent mb-1 transition-opacity duration-300 ease-in-out group-[.open]:opacity-0"></span>
+      <span class="block w-6 h-0.5 bg-ts-accent transition-transform duration-300 ease-in-out group-[.open]:-rotate-45 group-[.open]:-translate-y-1"></span>
+    </button>
+  </nav>
+      <span class="block w-5 sm:w-6 h-0.5 bg-ts-accent transition-transform duration-300 ease-in-out group-[.open]:-rotate-45 group-[.open]:-translate-y-1.5"></span>
     </button>
   </nav>
 
@@ -57,35 +64,35 @@ const currentPath = Astro.url.pathname;
 
   {/* Panel */}
   <!-- Panel móvil full screen -->
-<div
-  id="mobile-menu-panel"
-  class="fixed inset-0 bg-ts-background-dark/95 backdrop-blur-md transform translate-x-full opacity-0 transition-all duration-300 ease-in-out md:hidden z-50 p-6 flex flex-col pt-20"
->
-  <button
-    id="mobile-menu-close-button"
-    class="absolute top-4 right-4 text-white focus:outline-none p-2"
-    aria-label="Cerrar menú"
+  <div
+    id="mobile-menu-panel"
+    class="fixed inset-0 bg-ts-background-dark/95 backdrop-blur-md transform translate-x-full opacity-0 transition-all duration-300 ease-in-out md:hidden z-50 p-6 flex flex-col pt-20"
   >
-    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-    </svg>
-  </button>
+    <button
+      id="mobile-menu-close-button"
+      class="absolute top-4 right-4 text-white focus:outline-none p-2"
+      aria-label="Cerrar menú"
+    >
+      <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+      </svg>
+    </button>
 
-  <div class="flex flex-col space-y-6 mt-8">
-    {
-      navItems.map((link, i) => (
-        <a
-          href={link.url}
-          class={`text-white hover:text-ts-accent text-2xl font-semibold transition duration-300 opacity-0 translate-x-8`}
-          style={`transition-delay: ${100 + i * 60}ms`}
-          data-mobile-link
-        >
-          {link.title}
-        </a>
-      ))
-    }
+    <div class="flex flex-col space-y-6 mt-8">
+      {
+        navItems.map((link, i) => (
+          <a
+            href={link.url}
+            class={`text-white hover:text-ts-accent text-2xl font-semibold transition duration-300 opacity-0 translate-x-8`}
+            style={`transition-delay: ${100 + i * 60}ms`}
+            data-mobile-link
+          >
+            {link.title}
+          </a>
+        ))
+      }
+    </div>
   </div>
-</div>
 
 </header>
 
@@ -99,6 +106,7 @@ const currentPath = Astro.url.pathname;
     const mobileLinks = mobileMenuPanel.querySelectorAll("[data-mobile-link]");
 
     function openMobileMenu() {
+      mobileMenuButton.classList.add("open");
       mobileMenuPanel.classList.remove("translate-x-full", "opacity-0");
       mobileMenuPanel.classList.add("translate-x-0", "opacity-100");
       mobileMenuOverlay.classList.remove("opacity-0", "pointer-events-none");
@@ -113,6 +121,7 @@ const currentPath = Astro.url.pathname;
     }
 
     function closeMobileMenu() {
+      mobileMenuButton.classList.remove("open");
       mobileMenuPanel.classList.remove("translate-x-0", "opacity-100");
       mobileMenuPanel.classList.add("translate-x-full", "opacity-0");
       mobileMenuOverlay.classList.remove("opacity-60", "pointer-events-auto");

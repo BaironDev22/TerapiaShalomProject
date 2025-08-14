@@ -146,6 +146,7 @@ const { title = 'Terapia Shalom - Masajes y Bienestar' } = Astro.props as { titl
                 <div>
                   <label for="reservation-date" class="block text-sm font-medium text-ts-text mb-1">Fecha de Reserva *</label>
                   <input type="date" id="reservation-date" name="date" required 
+                         min=""
                          class="w-full p-3 border border-ts-accent/40 rounded-lg focus:ring-2 focus:ring-ts-primary focus:border-ts-primary">
                   <span class="error-message text-red-500 text-sm hidden"></span>
                 </div>
@@ -189,6 +190,19 @@ const { title = 'Terapia Shalom - Masajes y Bienestar' } = Astro.props as { titl
     <!-- Script simplificado para el botón WhatsApp -->
     <script is:inline>
       document.addEventListener('DOMContentLoaded', function() {
+        // Establecer fecha mínima inmediatamente
+        const dateInput = document.getElementById('reservation-date');
+        if (dateInput) {
+          const today = new Date();
+          const year = today.getFullYear();
+          const month = String(today.getMonth() + 1).padStart(2, '0');
+          const day = String(today.getDate()).padStart(2, '0');
+          const todayString = `${year}-${month}-${day}`;
+          
+          dateInput.setAttribute('min', todayString);
+          dateInput.min = todayString;
+        }
+
         const whatsappButton = document.getElementById('whatsapp-button');
         const whatsappText = document.getElementById('whatsapp-text');
 

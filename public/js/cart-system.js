@@ -56,10 +56,14 @@ const DateUtils = {
   },
 
   /**
-   * Obtiene la fecha de hoy en formato ISO
+   * Obtiene la fecha de hoy en formato ISO local (evita problemas de zona horaria)
    */
   getTodayISO() {
-    return new Date().toISOString().split('T')[0];
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, '0');
+    const day = String(today.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
   },
 
   /**
@@ -562,17 +566,56 @@ class ReservationManager {
   setupDateValidation() {
     if (!this.elements.dateInput) return;
 
-    this.elements.dateInput.min = DateUtils.getTodayISO();
-    this.elements.dateInput.max = DateUtils.getFutureDate(SCHEDULE_CONFIG.MAX_RESERVATION_MONTHS);
+    // Configurar restricciones de fecha
+    const today = DateUtils.getTodayISO();
+    const maxDate = DateUtils.getFutureDate(SCHEDULE_CONFIG.MAX_RESERVATION_MONTHS);
+    
+    this.elements.dateInput.min = today;
+    this.elements.dateInput.max = maxDate;
+    
+    // Forzar atributos para iOS
+    this.elements.dateInput.setAttribute('min', today);
+    this.elements.dateInput.setAttribute('max', maxDate);
+    
+    // Listener para validación inmediata
     this.elements.dateInput.addEventListener('input', (e) => this.validateSelectedDate(e));
+    this.elements.dateInput.addEventListener('change', (e) => {
+      if (this.validateSelectedDate(e)) {
+        this.updateTimeOptions();
+      }
+    });
+    
+    // Validación adicional para iOS en blur
+    this.elements.dateInput.addEventListener('blur', (e) => {
+      if (e.target.value) {
+        this.validateSelectedDate(e);
+      }
+    });
   }
 
   validateSelectedDate(e) {
     const selectedDate = new Date(e.target.value);
+    const today = new Date();
     const dayOfWeek = DateUtils.getDayOfWeek(e.target.value);
     
+    // Resetear horas para comparación precisa
+    today.setHours(0, 0, 0, 0);
+    selectedDate.setHours(0, 0, 0, 0);
+    
+    const errorElement = e.target.parentElement.querySelector('.error-message');
+    
+    // Validar fecha pasada
+    if (selectedDate < today) {
+      this.validator.showError(e.target, errorElement, 'No puedes seleccionar fechas pasadas');
+      setTimeout(() => {
+        e.target.value = '';
+        this.elements.timeSelect.innerHTML = '<option value="">Selecciona una hora</option>';
+      }, 100);
+      return false;
+    }
+    
+    // Validar domingo
     if (dayOfWeek === 0) { // Domingo
-      const errorElement = e.target.parentElement.querySelector('.error-message');
       this.validator.showError(e.target, errorElement, ERROR_MESSAGES.sunday_not_available);
       
       setTimeout(() => {
@@ -582,6 +625,10 @@ class ReservationManager {
       
       return false;
     }
+    
+    // Limpiar errores si la fecha es válida
+    this.validator.clearError(e.target, errorElement);
+    return true;
     
     this.updateTimeOptions();
     return true;

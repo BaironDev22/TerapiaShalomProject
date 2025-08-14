@@ -2,23 +2,101 @@
 import CelularIcon from './icons/CelularIcon.astro'; 
 import MailIcon from './icons/MailIcon.astro'; 
 import HorarioIcon from './icons/HorarioIcon.astro';
+import FacebookIcon from './icons/FacebookIcon.astro';
+import InstagramIcon from './icons/InstagramIcon.astro';
 ---
 
-<footer class="mt-auto py-6 bg-ts-background-dark text-ts-text border-t border-ts-accent/20 shadow-inner">
-  <div class="max-w-4xl mx-auto px-4 flex flex-col items-center">
-    <h3 class="text-2xl font-bold mb-1 text-ts-accent text-center tracking-wide">Terapia Shalom</h3>
-    <div class="flex flex-col sm:flex-row sm:flex-wrap sm:justify-center gap-1 sm:gap-4 items-center text-center text-sm mb-2">
-      <p class="flex items-center justify-center">
-        <CelularIcon class="w-4 h-4 mr-2" /> +56 9 3587 5470
-      </p>
-      <p class="flex items-center justify-center">
-        <MailIcon class="w-4 h-4 mr-2" /> t.shalomptomontt@gmail.com
-      </p>
-      <p class="flex items-center justify-center">
-        <HorarioIcon class="w-4 h-4 mr-2" /> Lunes a Viernes, 9:00 - 18:00
+<footer class="mt-auto bg-ts-background-dark text-ts-text border-t border-ts-accent/20 shadow-inner">
+  <div class="max-w-6xl mx-auto px-6 py-12">
+    <!-- Contenido principal del footer dividido en 2 columnas -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-8">
+      
+      <!-- Columna izquierda: Información de la empresa -->
+      <div class="space-y-6">
+        <div>
+          <h3 class="text-3xl font-bold text-ts-accent mb-4 tracking-wide">Terapia Shalom</h3>
+          <p class="text-ts-text/80 leading-relaxed">
+            Centro especializado en bienestar integral, ofreciendo terapias naturales y tratamientos 
+            personalizados para el cuidado de tu cuerpo y mente en Puerto Montt.
+          </p>
+        </div>
+        
+        <!-- Redes sociales -->
+        <div>
+          <h4 class="text-lg font-semibold text-ts-accent mb-3">Síguenos en nuestras redes</h4>
+          <div class="flex space-x-4">
+            <a 
+              href="#" 
+              class="p-3 bg-ts-accent/10 hover:bg-ts-accent/20 rounded-full transition-colors duration-300 group"
+              aria-label="Síguenos en Facebook"
+              title="Facebook - Terapia Shalom"
+            >
+              <FacebookIcon class="w-6 h-6" />
+            </a>
+            <a 
+              href="#" 
+              class="p-3 bg-ts-accent/10 hover:bg-ts-accent/20 rounded-full transition-colors duration-300 group"
+              aria-label="Síguenos en Instagram"
+              title="Instagram - Terapia Shalom"
+            >
+              <InstagramIcon class="w-6 h-6 text-ts-accent group-hover:text-ts-primary transition-colors" />
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Columna derecha: Información de contacto -->
+      <div class="space-y-6">
+        <div>
+          <h4 class="text-xl font-semibold text-ts-accent mb-4">Información de Contacto</h4>
+          <div class="space-y-4">
+            <div class="flex items-start space-x-3">
+              <CelularIcon class="w-5 h-5 text-ts-accent mt-0.5 flex-shrink-0" />
+              <div>
+                <p class="font-medium">Teléfono</p>
+                <a 
+                  href="tel:+56935875470" 
+                  class="text-ts-text/80 hover:text-ts-accent transition-colors"
+                >
+                  +56 9 3587 5470
+                </a>
+              </div>
+            </div>
+            
+            <div class="flex items-start space-x-3">
+              <MailIcon class="w-5 h-5 text-ts-accent mt-0.5 flex-shrink-0" />
+              <div>
+                <p class="font-medium">Email</p>
+                <a 
+                  href="mailto:t.shalomptomontt@gmail.com" 
+                  class="text-ts-text/80 hover:text-ts-accent transition-colors break-all"
+                >
+                  t.shalomptomontt@gmail.com
+                </a>
+              </div>
+            </div>
+            
+            <div class="flex items-start space-x-3">
+              <HorarioIcon class="w-5 h-5 text-ts-accent mt-0.5 flex-shrink-0" />
+              <div>
+                <p class="font-medium">Horarios de Atención</p>
+                <p class="text-ts-text/80">Lunes a Sábado</p>
+                <p class="text-ts-text/80">10:00 AM - 6:00 PM</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Línea divisora -->
+    <hr class="border-ts-accent/20 mb-6" />
+    
+    <!-- Copyright -->
+    <div class="text-center">
+      <p class="text-sm text-ts-text/70">
+        &copy; {new Date().getFullYear()} Terapia Shalom. Todos los derechos reservados. | Puerto Montt, Chile
       </p>
     </div>
-    <hr class="w-full my-1 border-ts-accent/10" />
-    <p class="text-xs opacity-90 text-center mt-1 mb-0">&copy; {new Date().getFullYear()} Terapia Shalom. Todos los derechos reservados.</p>
   </div>
 </footer>

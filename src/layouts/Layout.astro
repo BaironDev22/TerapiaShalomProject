@@ -62,17 +62,17 @@ const { title = 'Terapia Shalom - Masajes y Bienestar' } = Astro.props as { titl
     <!-- Modales del sistema de carrito (solo si no existen en la página) -->
     <div id="global-cart-modals">
       <!-- Modal del Carrito -->
-      <div id="cart-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
-        <div class="flex items-center justify-center min-h-screen p-4">
-          <div class="bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-hidden">
+      <div id="cart-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden overflow-y-auto">
+        <div class="flex items-center justify-center min-h-screen p-2 sm:p-4">
+          <div class="bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[95vh] sm:max-h-[90vh] overflow-hidden my-2 sm:my-4">
             <!-- Header del Modal -->
-            <div class="bg-ts-primary text-white p-6 flex justify-between items-center">
-              <h2 class="text-2xl font-bold">Mi Carrito de Servicios</h2>
+            <div class="bg-ts-primary text-white p-4 sm:p-6 flex justify-between items-center sticky top-0 z-10">
+              <h2 class="text-xl sm:text-2xl font-bold">Mi Carrito de Servicios</h2>
               <button id="close-cart-btn" class="text-white hover:text-gray-200 text-2xl font-bold">&times;</button>
             </div>
             
             <!-- Contenido del Modal -->
-            <div class="p-6 overflow-y-auto max-h-[70vh]">
+            <div class="p-4 sm:p-6 overflow-y-auto" style="max-height: calc(95vh - 180px);">
               <!-- Lista de servicios -->
               <div id="cart-items-list" class="space-y-4 mb-6">
                 <div class="text-center text-gray-500 py-8">
@@ -86,19 +86,19 @@ const { title = 'Terapia Shalom - Masajes y Bienestar' } = Astro.props as { titl
               
               <!-- Total -->
               <div id="cart-total-section" class="border-t pt-4 hidden">
-                <div class="flex justify-between items-center text-xl font-bold text-ts-primary">
+                <div class="flex justify-between items-center text-lg sm:text-xl font-bold text-ts-primary">
                   <span>Total:</span>
                   <span>$<span id="cart-total">0</span></span>
                 </div>
               </div>
               
               <!-- Botones de acción -->
-              <div id="cart-actions" class="mt-6 gap-3 hidden">
+              <div id="cart-actions" class="mt-6 gap-3 hidden sticky bottom-0 bg-white pt-4 border-t">
                 <button id="view-services-btn" class="flex-1 bg-gray-500 text-white py-3 px-6 rounded-lg hover:bg-gray-600 transition font-semibold text-center">
                   Ver Más Servicios
                 </button>
                 <button id="reserve-btn" class="flex-1 bg-ts-accent text-white py-3 px-6 rounded-lg hover:bg-ts-primary transition font-semibold">
-                  Proceder a Reservar
+                  Reservar
                 </button>
               </div>
             </div>
@@ -107,17 +107,17 @@ const { title = 'Terapia Shalom - Masajes y Bienestar' } = Astro.props as { titl
       </div>
 
       <!-- Modal de Reserva -->
-      <div id="reservation-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
-        <div class="flex items-center justify-center min-h-screen p-4">
-          <div class="bg-white rounded-2xl shadow-2xl max-w-lg w-full max-h-[90vh] overflow-hidden">
+      <div id="reservation-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden overflow-y-auto">
+        <div class="flex items-center justify-center min-h-screen p-2 sm:p-4">
+          <div class="bg-white rounded-2xl shadow-2xl max-w-lg w-full max-h-[95vh] sm:max-h-[90vh] overflow-hidden my-2 sm:my-4">
             <!-- Header del Modal de Reserva -->
-            <div class="bg-ts-accent text-white p-6 flex justify-between items-center">
-              <h2 class="text-2xl font-bold">Datos de Reserva</h2>
+            <div class="bg-ts-accent text-white p-4 sm:p-6 flex justify-between items-center sticky top-0 z-10">
+              <h2 class="text-xl sm:text-2xl font-bold">Datos de Reserva</h2>
               <button id="close-reservation-btn" class="text-white hover:text-gray-200 text-2xl font-bold">&times;</button>
             </div>
             
             <!-- Formulario de Reserva -->
-            <div class="p-6">
+            <div class="p-4 sm:p-6 overflow-y-auto" style="max-height: calc(95vh - 180px);">
               <form id="reservation-form" class="space-y-4">
                 <!-- Nombre -->
                 <div>
@@ -169,7 +169,7 @@ const { title = 'Terapia Shalom - Masajes y Bienestar' } = Astro.props as { titl
                 </div>
 
                 <!-- Botones -->
-                <div class="flex gap-3 pt-4">
+                <div class="flex flex-col sm:flex-row gap-3 pt-4 sticky bottom-0 bg-white border-t mt-6">
                   <button type="button" id="back-to-cart-btn" 
                           class="flex-1 bg-gray-500 text-white py-3 px-6 rounded-lg hover:bg-gray-600 transition font-semibold">
                     Volver al Carrito

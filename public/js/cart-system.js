@@ -460,7 +460,8 @@ class CartUI {
     this.elements.totalSection?.classList.remove('hidden');
     this.elements.reserveSection?.classList.remove('hidden');
     if (this.elements.reserveSection) {
-      this.elements.reserveSection.style.display = 'flex';
+      this.elements.reserveSection.style.display = '';
+      this.elements.reserveSection.classList.add('flex', 'flex-col', 'sm:flex-row');
     }
 
     this.bindQuantityControls();

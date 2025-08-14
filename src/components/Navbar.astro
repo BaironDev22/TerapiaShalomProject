@@ -24,7 +24,12 @@ const currentPath = Astro.url.pathname;
       transition-all duration-300 ease-in-out"
     aria-label="Menú principal"
   >
-    <a href="/" class="text-2xl font-bold text-ts-primary flex-shrink-0 flex items-center space-x-2">
+    <a 
+      href="/" 
+      class="text-2xl font-bold text-ts-primary flex-shrink-0 flex items-center space-x-2"
+      aria-label="Ir a página principal de Terapia Shalom"
+      title="Terapia Shalom - Inicio"
+    >
       <FlowerIcon class="w-7 h-7 text-ts-primary" />
     </a>
     <ul class="hidden md:flex md:space-x-6 text-base">

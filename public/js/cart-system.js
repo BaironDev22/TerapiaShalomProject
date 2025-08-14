@@ -3,7 +3,50 @@
  * Refactorizado con inyección de dependencias y separación de responsabilidades
  */
 
-// === CONSTANTES DE CONFIGURACIÓN ===
+/**
+ * ===================================================
+ * TERAPIA SHALOM - SISTEMA DE CARRITO OPTIMIZADO
+ * ===================================================
+ * 
+ * OPTIMIZACIONES DE RENDIMIENTO IMPLEMENTADAS:
+ * - Event listeners pasivos para scroll, touch y resize
+ * - Detección automática de soporte para passive listeners
+ * - Utilidades para manejar eventos de alto rendimiento
+ * - Prevención de bloqueo del hilo principal
+ * 
+ * COMPATIBILIDAD:
+ * - Funciona en navegadores modernos y legacy
+ * - Fallback automático para navegadores sin soporte passive
+ * ===================================================
+ */
+
+// === UTILIDADES DE RENDIMIENTO ===
+const EventUtils = {
+  supportsPassive: (() => {
+    let supportsPassive = false;
+    try {
+      const opts = Object.defineProperty({}, 'passive', {
+        get: function() {
+          supportsPassive = true;
+          return false;
+        }
+      });
+      window.addEventListener('testPassive', null, opts);
+      window.removeEventListener('testPassive', null, opts);
+    } catch (e) {}
+    return supportsPassive;
+  })(),
+
+  getPassiveOption() {
+    return this.supportsPassive ? { passive: true } : false;
+  },
+
+  addPassiveListener(element, event, handler) {
+    element.addEventListener(event, handler, this.getPassiveOption());
+  }
+};
+
+// === CONFIGURACIÓN ===
 const SCHEDULE_CONFIG = {
   WEEKDAY_HOURS: { start: '10:00', end: '19:00', interval: 60 },
   SATURDAY_HOURS: { start: '10:00', end: '13:00', interval: 60 },

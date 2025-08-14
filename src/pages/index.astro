@@ -50,7 +50,7 @@ import 'aos/dist/aos.css';
         }
 
         handleHeroFade();
-        window.addEventListener('scroll', handleHeroFade);
+        window.addEventListener('scroll', handleHeroFade, { passive: true });
 
         document.addEventListener('astro:before-swap', () => {
           window.removeEventListener('scroll', handleHeroFade);

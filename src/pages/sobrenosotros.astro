@@ -298,6 +298,19 @@ import 'aos/dist/aos.css';
   </main>
 
   <script is:inline>
+    // Utilidad para passive listeners optimizada
+    const supportsPassive = (() => {
+      let passive = false;
+      try {
+        const opts = Object.defineProperty({}, 'passive', {
+          get: function() { passive = true; return false; }
+        });
+        window.addEventListener('test', null, opts);
+        window.removeEventListener('test', null, opts);
+      } catch (e) {}
+      return passive;
+    })();
+
     // Inicializar AOS cuando se carga la página
     document.addEventListener('DOMContentLoaded', function() {
       // Importar e inicializar AOS

@@ -219,6 +219,23 @@ const { title = 'Terapia Shalom - Masajes y Bienestar' } = Astro.props as { titl
 
     <!-- Script simplificado para el botón WhatsApp -->
     <script is:inline>
+      // Utilidad para detectar soporte de passive listeners
+      let supportsPassive = false;
+      try {
+        const opts = Object.defineProperty({}, 'passive', {
+          get: function() {
+            supportsPassive = true;
+            return false;
+          }
+        });
+        window.addEventListener('testPassive', null, opts);
+        window.removeEventListener('testPassive', null, opts);
+      } catch (e) {}
+
+      // Opciones optimizadas para event listeners
+      const passiveOpt = supportsPassive ? { passive: true } : false;
+      const passiveCapture = supportsPassive ? { passive: true, capture: true } : true;
+
       document.addEventListener('DOMContentLoaded', function() {
         // Establecer fecha mínima inmediatamente
         const dateInput = document.getElementById('reservation-date');
@@ -246,16 +263,16 @@ const { title = 'Terapia Shalom - Masajes y Bienestar' } = Astro.props as { titl
             whatsappText.classList.remove('scale-105', 'shadow-2xl');
           });
 
-          // Efecto de pulsación en móviles
+          // Efecto de pulsación en móviles con passive listeners optimizados
           whatsappButton.addEventListener('touchstart', function() {
             whatsappText.classList.add('scale-105');
-          });
+          }, passiveOpt);
 
           whatsappButton.addEventListener('touchend', function() {
             setTimeout(() => {
               whatsappText.classList.remove('scale-105');
             }, 150);
-          });
+          }, passiveOpt);
         }
 
         // Test simple para verificar que addToCart funciona
